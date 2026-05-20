@@ -724,7 +724,8 @@ mark {
     navLinks.querySelectorAll('li.dropdown > a').forEach(link => {
       link.addEventListener('click', (e) => {
         if (window.innerWidth <= 1100) {
-          e.preventDefault();
+          e.preventDefault(); // Always prevent navigation on mobile for dropdown parents
+          
           const parent = link.closest("li.dropdown");
           const isVisible = parent.classList.contains("active-mobile");
           

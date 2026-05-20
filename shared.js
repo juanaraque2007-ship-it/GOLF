@@ -176,8 +176,10 @@
     navLinks.querySelectorAll("li.dropdown > a").forEach((dropdownLink) => {
       dropdownLink.addEventListener("click", (e) => {
         if (!isMobileNav()) return; // Desktop uses hover, no override
-        const parent = dropdownLink.closest("li.dropdown");
         
+        e.preventDefault(); // Always prevent navigation on mobile for dropdown parents
+        
+        const parent = dropdownLink.closest("li.dropdown");
         const isVisible = parent.classList.contains("active-mobile");
         
         // Close all other open submenus first
@@ -186,7 +188,6 @@
         });
         
         if (!isVisible) {
-          e.preventDefault();
           parent.classList.add("active-mobile");
         } else {
           parent.classList.remove("active-mobile");
