@@ -622,7 +622,8 @@
   var PROV_MAP = {'ALBACETE':'AB','CIUDAD REAL':'CR','CUENCA':'CU','GUADALAJARA':'GU','TOLEDO':'TO'};
   Object.keys(PROV_MAP).forEach(function(prov) {
     var cnt = CLUBES_DATA.filter(function(c){ return c.provincia === prov; }).length;
-    document.getElementById('cnt-'+PROV_MAP[prov]).textContent = cnt;
+    var el = document.getElementById('cnt-'+PROV_MAP[prov]);
+    if (el) el.textContent = cnt;
   });
 
   // ── Init ──
