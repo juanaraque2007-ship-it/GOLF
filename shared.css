@@ -150,10 +150,15 @@ nav {
   list-style: none;
   min-width: 220px;
   padding: 10px 0;
-  display: none;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
   border-top: 2px solid var(--gold);
   z-index: 1001;
+  
+  /* Animacion para desktop */
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
 }
 
 .dropdown-menu li a {
@@ -171,8 +176,18 @@ nav {
   color: var(--gold) !important;
 }
 
-.nav-links li.dropdown:hover .dropdown-menu {
-  display: block;
+@media (hover: hover) {
+  .nav-links li.dropdown:hover .dropdown-menu {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.nav-links li.dropdown.active-dropdown .dropdown-menu {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .nav-links li.dropdown>a::after {
@@ -247,7 +262,6 @@ nav {
 }
 
 .dropdown-contenido-nav {
-  display: none;
   position: absolute;
   top: calc(100% + 6px);
   right: 0;
@@ -256,6 +270,12 @@ nav {
   min-width: 130px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
   z-index: 200;
+  
+  /* Animacion dropdown app torneos */
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s;
 }
 
 .dropdown-contenido-nav a {
@@ -273,11 +293,24 @@ nav {
   color: var(--gold);
 }
 
-.nav-app-dropdown:hover .dropdown-contenido-nav {
-  display: block;
+@media (hover: hover) {
+  .nav-app-dropdown:hover .dropdown-contenido-nav {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .nav-app-dropdown:hover .boton-app-nav {
+    background: #d4b36a;
+  }
 }
 
-.nav-app-dropdown:hover .boton-app-nav {
+.nav-app-dropdown.active-dropdown .dropdown-contenido-nav {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.nav-app-dropdown.active-dropdown .boton-app-nav {
   background: #d4b36a;
 }
 
@@ -764,8 +797,17 @@ footer.keep-custom-footer .footer-bottom p {
     transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease, padding 0.4s ease, visibility 0.4s;
   }
 
-  .nav-links li.dropdown:hover .dropdown-menu,
-  .nav-links li.dropdown.active-mobile .dropdown-menu {
+  @media (hover: hover) {
+    .nav-links li.dropdown:hover .dropdown-menu {
+      max-height: 500px;
+      opacity: 1;
+      padding: 8px 0;
+      visibility: visible;
+    }
+  }
+
+  .nav-links li.dropdown.active-mobile .dropdown-menu,
+  .nav-links li.dropdown.active-dropdown .dropdown-menu {
     max-height: 500px;
     opacity: 1;
     padding: 8px 0;
