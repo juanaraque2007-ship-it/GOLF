@@ -55,7 +55,7 @@
       <ul class="dropdown-menu">
         <li><a href="competiciones.html" data-page="competiciones.html">Calendario</a></li>
         <li><a href="https://rfegolf.es/CompetenciaPaginas/AllCompetitions.aspx">Calendario RFEG</a></li>
-        <li><a href="seleccion.html" data-page="seleccion.html">Castilla-La Mancha en Cptos. España</a></li>
+        <li><a href="seleccion.html" data-page="seleccion.html"><span class="recording-indicator"></span>En vivo</a></li>
       </ul>
     </li>
     <li><a href="escuela.html" data-page="escuela.html">Escuela</a></li>
