@@ -8,6 +8,10 @@
 
   const currentPage = window.location.pathname.split("/").pop() || "index.html";
 
+  const currentScript = document.currentScript;
+  const scriptSrc = currentScript ? currentScript.getAttribute("src") : "";
+  const basePath = scriptSrc ? scriptSrc.replace(/shared(?:_nav)?\.js.*$/, "") : "";
+
   const NAV_HTML = `
 <nav id="mainNav">
   <a href="index.html" class="nav-logo">
@@ -55,7 +59,7 @@
       <ul class="dropdown-menu">
         <li><a href="competiciones.html" data-page="competiciones.html">Calendario</a></li>
         <li><a href="https://rfegolf.es/CompetenciaPaginas/AllCompetitions.aspx">Calendario RFEG</a></li>
-        <li><a href="en-vivo.html" data-page="en-vivo.html"><span class="recording-indicator"></span>En vivo</a></li>
+        <li><a href="seleccion.html" data-page="seleccion.html"><span class="recording-indicator"></span>En vivo</a></li>
       </ul>
     </li>
     <li><a href="escuela.html" data-page="escuela.html">Escuela</a></li>
@@ -132,20 +136,28 @@
 </footer>`;
 
   function injectNav() {
+    let finalNav = NAV_HTML;
+    if (basePath && basePath !== "./") {
+      finalNav = finalNav.replace(/(href|src)="(?!\/|http|mailto|#|javascript:)([^"]+)"/g, '$1="' + basePath + '$2"');
+    }
     const existingNav = document.querySelector("nav");
     if (existingNav) {
-      existingNav.outerHTML = NAV_HTML;
+      existingNav.outerHTML = finalNav;
     } else {
-      document.body.insertAdjacentHTML("afterbegin", NAV_HTML);
+      document.body.insertAdjacentHTML("afterbegin", finalNav);
     }
   }
 
   function injectFooter() {
+    let finalFooter = FOOTER_HTML;
+    if (basePath && basePath !== "./") {
+      finalFooter = finalFooter.replace(/(href|src)="(?!\/|http|mailto|#|javascript:)([^"]+)"/g, '$1="' + basePath + '$2"');
+    }
     const existingFooter = document.querySelector("footer");
     if (existingFooter) {
-      existingFooter.outerHTML = FOOTER_HTML;
+      existingFooter.outerHTML = finalFooter;
     } else {
-      document.body.insertAdjacentHTML("beforeend", FOOTER_HTML);
+      document.body.insertAdjacentHTML("beforeend", finalFooter);
     }
   }
 

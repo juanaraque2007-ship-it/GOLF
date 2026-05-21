@@ -8,38 +8,26 @@
 
   const currentPage = window.location.pathname.split('/').pop() || 'index.html';
 
-  // Detect path prefix to resolve links correctly from subdirectories
-  const scriptEl = Array.from(document.querySelectorAll('script')).find(s => {
-    const src = s.getAttribute('src');
-    return src && (src.includes('shared.js') || src.includes('shared_nav.js'));
-  });
-  let pathPrefix = '';
-  if (scriptEl) {
-    const src = scriptEl.getAttribute('src');
-    const match = src.match(/(.*)shared(_nav)?\.js/);
-    if (match && match[1]) {
-      pathPrefix = match[1];
-    }
-  }
+  const currentScript = document.currentScript;
+  const scriptSrc = currentScript ? currentScript.getAttribute("src") : "";
+  const basePath = scriptSrc ? scriptSrc.replace(/shared(?:_nav)?\.js.*$/, "") : "";
 
   // ── ÍNDICE DE PÁGINAS DEL SITIO ──────────────────────────────
   const SITE_INDEX = [
     { titulo: 'Inicio', url: 'index.html', desc: 'Página principal de la Federación de Golf de Castilla-La Mancha', tags: 'inicio home principal federacion' },
     { titulo: 'Bienvenida del Presidente', url: 'presidente.html', desc: 'Mensaje de bienvenida del presidente de la FGCLM', tags: 'presidente bienvenida directiva' },
-    { titulo: 'Junta Directiva y Asamblea', url: 'junta-directiva.html', desc: 'Junta directiva, asamblea general y órganos de gobierno', tags: 'junta directiva asamblea gobierno organos' },
+    { titulo: 'Junta Directiva y Asamblea', url: 'junta.html', desc: 'Junta directiva, asamblea general y órganos de gobierno', tags: 'junta directiva asamblea gobierno organos' },
     { titulo: 'Comités y Delegaciones', url: 'comites.html', desc: 'Comités técnicos y delegaciones provinciales', tags: 'comites delegaciones provinciales albacete cuenca ciudad real guadalajara toledo' },
     { titulo: 'Licencia y Hándicap', url: 'licencia.html', desc: 'Tramitación de licencias federativas y consulta de hándicap', tags: 'licencia handicap federado tramites cuota seguro' },
     { titulo: 'Subvenciones', url: 'subvenciones.html', desc: 'Información sobre subvenciones y ayudas de la federación', tags: 'subvenciones ayudas becas financiacion' },
     { titulo: 'Transparencia', url: 'transparencia.html', desc: 'Portal de transparencia y documentación oficial', tags: 'transparencia documentos cuentas presupuesto estatutos' },
     { titulo: 'Contacto', url: 'contacto.html', desc: 'Datos de contacto y formulario de la federación', tags: 'contacto telefono email direccion azuqueca guadalajara' },
     { titulo: 'Reglas de Golf', url: 'reglas-golf.html', desc: 'Reglamento oficial de golf y reglas del juego', tags: 'reglas golf reglamento normas juego rfeg' },
-    { titulo: 'Circulares RFEG', url: 'circulares-rfeg.html', desc: 'Circulares de la Real Federación Española de Golf', tags: 'circulares rfeg reglamento normas' },
-    { titulo: 'Circulares FGCLM', url: 'circulares-fgclm.html', desc: 'Circulares de la Federación de Golf de Castilla-La Mancha', tags: 'circulares fgclm reglamento normas' },
-    { titulo: 'Reglas Locales', url: 'reglas-locales.html', desc: 'Reglas locales permanentes de la FGCLM', tags: 'reglas locales reglamento normas' },
+    { titulo: 'Circulares RFEG y FGCLM', url: 'circulares.html', desc: 'Circulares federativas, reglas locales y comunicados oficiales', tags: 'circulares rfeg fgclm reglas locales comunicados' },
     { titulo: 'Rankings Castilla-La Mancha', url: 'rankings.html', desc: 'Rankings autonómicos masculino, femenino, senior y juvenil', tags: 'rankings clasificacion masculino femenino senior juvenil absoluto' },
-    { titulo: 'Circuito 5ª Categoría', url: 'circuito-5categoria.html', desc: 'Circuito y ranking de jugadores de quinta categoría', tags: 'circuito quinta 5 categoria ranking local' },
+    { titulo: 'Circuito 5ª Categoría', url: 'circuito-5cat.html', desc: 'Circuito y ranking de jugadores de quinta categoría', tags: 'circuito quinta 5 categoria ranking local' },
     { titulo: 'Clubes de Golf', url: 'clubes.html', desc: 'Directorio de clubes y campos de golf de Castilla-La Mancha', tags: 'clubes campos golf directorio albacete cuenca ciudad real guadalajara toledo' },
-    { titulo: 'Calendario', url: 'competiciones.html', desc: 'Calendario de torneos e inscripciones online', tags: 'torneos calendario inscripciones competiciones app' },
+    { titulo: 'Calendario', url: 'inscripcion.html', desc: 'Calendario de torneos e inscripciones online', tags: 'torneos calendario inscripciones competiciones app' },
     { titulo: 'Escuela de Golf', url: 'escuela.html', desc: 'Escuela de golf y programas de iniciación', tags: 'escuela iniciacion aprendizaje clases jovenes benjamines' },
     { titulo: 'Noticias', url: 'noticias.html', desc: 'Últimas noticias y novedades de la federación', tags: 'noticias actualidad campeonatos resultados' },
     { titulo: 'Aviso Legal', url: 'aviso-legal.html', desc: 'Aviso legal y condiciones de uso del sitio web', tags: 'aviso legal condiciones uso terminos' },
@@ -50,9 +38,9 @@
   // ── NAV HTML ─────────────────────────────────────────────────
   const NAV_HTML = `
 <nav id="mainNav">
-  <a href="${pathPrefix}index.html" class="nav-logo">
+  <a href="index.html" class="nav-logo">
     <div class="nav-logo-icon">
-      <img src="${pathPrefix}img/favicon_pagina.png" alt="Logo FGCLM">
+      <img src="img/favicon_pagina.png" alt="Logo FGCLM">
     </div>
     <div class="nav-logo-text">
       <span>Federación de Golf</span>
@@ -60,78 +48,51 @@
     </div>
   </a>
 
+  <button class="nav-hamburger" id="navToggle" aria-label="Abrir menú" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+
   <ul class="nav-links" id="navLinks">
     <li class="dropdown">
-      <a href="${pathPrefix}presidente.html">Federación</a>
+      <a href="presidente.html">Federación</a>
       <ul class="dropdown-menu">
-        <li><a href="${pathPrefix}presidente.html" data-page="presidente.html">Bienvenida del Presidente</a></li>
-        <li><a href="${pathPrefix}junta-directiva.html" data-page="junta-directiva.html">Junta Directiva y Asamblea</a></li>
-        <li><a href="${pathPrefix}comites.html" data-page="comites.html">Comités y Delegaciones</a></li>
-        <li><a href="${pathPrefix}licencia.html" data-page="licencia.html">Licencia y Hándicap</a></li>
-        <li><a href="${pathPrefix}subvenciones.html" data-page="subvenciones.html">Subvenciones</a></li>
-        <li><a href="${pathPrefix}transparencia.html" data-page="transparencia.html">Transparencia</a></li>
-        <li><a href="${pathPrefix}contacto.html" data-page="contacto.html">Contacto</a></li>
+        <li><a href="presidente.html" data-page="presidente.html">Bienvenida del Presidente</a></li>
+        <li><a href="junta.html" data-page="junta.html">Junta Directiva y Asamblea</a></li>
+        <li><a href="comites.html" data-page="comites.html">Comités y Delegaciones</a></li>
+        <li><a href="licencia.html" data-page="licencia.html">Licencia y Hándicap</a></li>
+        <li><a href="subvenciones.html" data-page="subvenciones.html">Subvenciones</a></li>
+        <li><a href="transparencia.html" data-page="transparencia.html">Transparencia</a></li>
+        <li><a href="contacto.html" data-page="contacto.html">Contacto</a></li>
       </ul>
     </li>
     <li class="dropdown">
-      <a href="${pathPrefix}reglas-golf.html">Reglamentos</a>
+      <a href="reglas-golf.html">Reglamentos</a>
       <ul class="dropdown-menu">
-        <li><a href="${pathPrefix}reglas-golf.html" data-page="reglas-golf.html">Reglas de Golf</a></li>
-        <li><a href="${pathPrefix}circulares-rfeg.html" data-page="circulares-rfeg.html">Circulares RFEG</a></li>
-        <li><a href="${pathPrefix}circulares-fgclm.html" data-page="circulares-fgclm.html">Circulares FGCLM</a></li>
-        <li><a href="${pathPrefix}reglas-locales.html" data-page="reglas-locales.html">Reglas Locales</a></li>
+        <li><a href="reglas-golf.html" data-page="reglas-golf.html">Reglas de Golf</a></li>
+        <li><a href="circulares.html#tab-rfeg" data-page="circulares.html">Circulares RFEG</a></li>
+        <li><a href="circulares.html#tab-fgclm" data-page="circulares.html">Circulares FGCLM</a></li>
+        <li><a href="circulares.html#tab-locales" data-page="circulares.html">Reglas Locales</a></li>
       </ul>
     </li>
+    <li><a href="clubes.html" data-page="clubes.html">Clubes</a></li>
     <li class="dropdown">
-      <a href="${pathPrefix}rankings.html">Rankings</a>
+      <a href="inscripcion.html">Torneos</a>
       <ul class="dropdown-menu">
-        <li><a href="${pathPrefix}rankings.html" data-page="rankings.html">Rankings Castilla-La Mancha</a></li>
-        <li><a href="${pathPrefix}circuito-5categoria.html" data-page="circuito-5categoria.html">Circuito 5ª Categoría</a></li>
+        <li><a href="inscripcion.html" data-page="inscripcion.html">Calendario</a></li>
+        <li><a href="https://rfegolf.es/NoticiasFederacionesPaginas/FederationMicrosite.aspx?FedId=32" target="_blank" rel="noopener">Calendario RFEG</a></li>
+        <li><a href="rankings.html" data-page="rankings.html"><span class="recording-indicator"></span>En vivo</a></li>
       </ul>
     </li>
-    <li><a href="${pathPrefix}clubes.html" data-page="clubes.html">Clubes</a></li>
-    <li class="dropdown">
-      <a href="${pathPrefix}competiciones.html">Torneos</a>
-      <ul class="dropdown-menu">
-        <li><a href="${pathPrefix}competiciones.html" data-page="competiciones.html">Calendario</a></li>
-        <li><a href="https://rfegolf.es/CompetenciaPaginas/AllCompetitions.aspx">Calendario RFEG</a></li>
-        <li><a href="${pathPrefix}rankings.html" data-page="rankings.html"><span class="recording-indicator"></span>En vivo</a></li>
-      </ul>
-    </li>
-    <li><a href="${pathPrefix}escuela.html" data-page="escuela.html">Escuela</a></li>
-    <li><a href="${pathPrefix}noticias.html" data-page="noticias.html">Noticias</a></li>
+    <li><a href="escuela.html" data-page="escuela.html">Escuela</a></li>
+    <li><a href="noticias.html" data-page="noticias.html">Noticias</a></li>
   </ul>
 
-  <div class="nav-right" style="display: flex; align-items: center; gap: 16px;">
-    <div class="nav-actions">
-      <button class="nav-search-btn" id="searchToggle" aria-label="Buscar en el sitio" title="Buscar">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="11" cy="11" r="7"/>
-          <line x1="16.5" y1="16.5" x2="22" y2="22"/>
-        </svg>
-      </button>
-      <a href="https://rfegolf.es/jugar/handicap" target="blank" class="btn-nav btn-nav-outline">Consultar Hándicap</a>
-      <div class="dropdown-app nav-app-dropdown">
-        <button class="btn-nav btn-nav-gold boton-app-nav">App Torneos ▾</button>
-        <div class="dropdown-contenido dropdown-contenido-nav">
-          <a href="https://apps.apple.com/es/app/fgclm-torneos/id6444149260" target="_blank" style="display: flex; align-items: center; gap: 8px;">
-            <svg width="16" height="16" fill="currentColor" viewBox="0 0 384 512"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>
-            iOS
-          </a>
-          <a href="https://play.google.com/store/apps/details?id=es.torneodegolf.fed.app&pli=1" target="_blank" style="display: flex; align-items: center; gap: 8px;">
-            <svg width="16" height="16" fill="currentColor" viewBox="0 0 512 512"><path d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1zM47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0zm425.2 225.6l-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c18-14.3 18-46.5-1.2-60.8zM104.6 499l280.8-161.2-60.1-60.1L104.6 499z"/></svg>
-            Android
-          </a>
-          <a href="https://appgallery.huawei.com/app/C107314035" target="_blank" style="display: flex; align-items: center; gap: 8px;">
-            <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16"><path d="M11 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h6zM5 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H5z"/><path d="M8 14a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/></svg>
-            Huawei
-          </a>
-        </div>
-      </div>
-    </div>
-    
-    <button class="nav-hamburger" id="navToggle" aria-label="Abrir menú" aria-expanded="false">
-      <span></span><span></span><span></span>
+  <div class="nav-actions">
+    <button class="nav-search-btn" id="searchToggle" aria-label="Buscar en el sitio" title="Buscar">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <circle cx="11" cy="11" r="7"/>
+        <line x1="16.5" y1="16.5" x2="22" y2="22"/>
+      </svg>
     </button>
   </div>
 </nav>
@@ -166,6 +127,7 @@
         <button class="search-chip" data-q="licencia">Licencia</button>
         <button class="search-chip" data-q="torneos">Torneos</button>
         <button class="search-chip" data-q="clubes">Clubes</button>
+
         <button class="search-chip" data-q="noticias">Noticias</button>
         <button class="search-chip" data-q="escuela">Escuela</button>
       </div>
@@ -175,7 +137,7 @@
 
   // ── FOOTER HTML ───────────────────────────────────────────────
   const FOOTER_HTML = `
-<footer class="footer-minimal">
+<footer>
   <div class="footer-top">
     <div class="footer-brand">
       <div class="footer-logo">
@@ -183,34 +145,51 @@
         <div class="footer-logo-name">Federación de Golf<br>de Castilla-La Mancha</div>
       </div>
       <p class="footer-desc">
-        Organismo rector del golf en Castilla-La Mancha, comprometido con el desarrollo, la promoción y la regulación del deporte.
+        Organismo rector del golf en Castilla-La Mancha, comprometido con el desarrollo, la promoción y la regulación del deporte del golf en las cinco provincias de la región.
       </p>
       <div class="footer-contact">
-        <p>Plaza de España 1, Local 8, 19200 Azuqueca de Henares (Gu) | 949-262300 | federacion@fedgolfclm.com</p>
+        <p>Plaza de España 1, Primera Planta, Local 8</p>
+        <p>19200 Azuqueca de Henares (Guadalajara)</p>
+        <p>Teléfono: 949-262300</p>
+        <p>federacion@fedgolfclm.com</p>
       </div>
     </div>
     <div>
       <div class="footer-col-title">La federación</div>
       <ul class="footer-links">
-        <li><a href="${pathPrefix}presidente.html">Bienvenida del Presidente</a></li>
-        <li><a href="${pathPrefix}comites.html">Comités y Delegaciones</a></li>
-        <li><a href="${pathPrefix}contacto.html">Contacto</a></li>
+        <li><a href="presidente.html">Bienvenida del Presidente</a></li>
+        <li><a href="junta.html">Junta Directiva</a></li>
+        <li><a href="comites.html">Comités y Delegaciones</a></li>
+        <li><a href="transparencia.html">Transparencia</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Servicios</div>
+      <ul class="footer-links">
+        <li><a href="licencia.html">Licencia y Hándicap</a></li>
+        <li><a href="licencia.html">Trámites y Cuotas</a></li>
+        <li><a href="licencia.html">Seguro de Accidente</a></li>
+        <li><a href="subvenciones.html">Subvenciones</a></li>
+
       </ul>
     </div>
     <div>
       <div class="footer-col-title">Legal</div>
       <ul class="footer-links">
-        <li><a href="${pathPrefix}aviso-legal.html">Aviso Legal</a></li>
-        <li><a href="${pathPrefix}privacidad.html">Política de Privacidad</a></li>
-        <li><a href="${pathPrefix}cookies.html">Política de Cookies</a></li>
+        <li><a href="aviso-legal.html">Aviso Legal</a></li>
+        <li><a href="privacidad.html">Política de Privacidad</a></li>
+        <li><a href="cookies.html">Política de Cookies</a></li>
+        <li><a href="reglas-golf.html">Reglas de Golf</a></li>
+        <li><a href="circulares.html">Circulares FGCLM</a></li>
       </ul>
     </div>
   </div>
   <div class="footer-bottom">
     <p>© 2026 Federación de Golf de Castilla-La Mancha · Todos los derechos reservados</p>
     <div class="footer-social">
-      <a href="https://www.facebook.com/fedgolfclm/" target="_blank" rel="noopener" title="Facebook"><img src="${pathPrefix}img/facebook_logo.png" alt="Facebook"></a>
-      <a href="https://www.instagram.com/fedgolfclm" target="_blank" rel="noopener" title="Instagram"><img src="${pathPrefix}img/instagram_logo.png" alt="Instagram"></a>
+      <a href="https://www.facebook.com/fedgolfclm/" target="_blank" rel="noopener" title="Facebook">f</a>
+      <a href="https://www.instagram.com/fedgolfclm" target="_blank" rel="noopener" title="Instagram">ig</a>
     </div>
   </div>
 </footer>`;
@@ -530,7 +509,7 @@ mark {
   let noticiasCache = null;
   function loadNoticias(cb) {
     if (noticiasCache) { cb(noticiasCache); return; }
-    fetch(pathPrefix + 'noticias_data.json')
+    fetch(basePath + 'noticias_data.json')
       .then(r => r.json())
       .then(data => {
         noticiasCache = Array.isArray(data) ? data : (data.noticias || []);
@@ -565,7 +544,7 @@ mark {
         const titleHL = highlight(p.titulo, q);
         const descHL  = highlight(p.desc, q);
         html += `
-          <a class="search-result-item" href="${pathPrefix}${p.url}">
+          <a class="search-result-item" href="${basePath}${p.url}">
             <div class="search-result-icon">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
             </div>
@@ -584,7 +563,7 @@ mark {
         const titleHL = highlight(n.titulo || 'Noticia', q);
         const desc = (n.resumen || (n.contenido_html || '').replace(/<[^>]+>/g, ' ').trim().slice(0, 100)) + '…';
         html += `
-          <a class="search-result-item" href="${pathPrefix}noticia.html?id=${n.id || ''}">
+          <a class="search-result-item" href="${basePath}noticia.html?id=${n.id || ''}">
             <div class="search-result-icon noticia-icon">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
             </div>
@@ -630,20 +609,28 @@ mark {
   }
 
   function injectNav() {
+    let finalNav = NAV_HTML;
+    if (basePath && basePath !== "./") {
+      finalNav = finalNav.replace(/(href|src)="(?!\/|http|mailto|#|javascript:)([^"]+)"/g, '$1="' + basePath + '$2"');
+    }
     const existingNav = document.querySelector('nav');
     if (existingNav) {
-      existingNav.outerHTML = NAV_HTML;
+      existingNav.outerHTML = finalNav;
     } else {
-      document.body.insertAdjacentHTML('afterbegin', NAV_HTML);
+      document.body.insertAdjacentHTML('afterbegin', finalNav);
     }
   }
 
   function injectFooter() {
+    let finalFooter = FOOTER_HTML;
+    if (basePath && basePath !== "./") {
+      finalFooter = finalFooter.replace(/(href|src)="(?!\/|http|mailto|#|javascript:)([^"]+)"/g, '$1="' + basePath + '$2"');
+    }
     const existingFooter = document.querySelector('footer');
     if (existingFooter) {
-      existingFooter.outerHTML = FOOTER_HTML;
+      existingFooter.outerHTML = finalFooter;
     } else {
-      document.body.insertAdjacentHTML('beforeend', FOOTER_HTML);
+      document.body.insertAdjacentHTML('beforeend', finalFooter);
     }
   }
 
@@ -823,75 +810,6 @@ mark {
     }, { passive: true });
   }
 
-  function initScrollReveal() {
-    // Elementos que se animan al entrar en pantalla
-    const SELECTORS = [
-      'section',
-      '.page-hero',
-      '.section-header',
-      '.area-card',
-      '.evento-card',
-      '.noticia-card',
-      '.modalidad-card',
-      '.precio-card',
-      '.profesor-card',
-      '.doc-block',
-      '.form-card',
-      '.pat-featured-card',
-      '.pat-logo',
-      '.ranking-card',
-      '.club-card',
-      'article',
-      '.highlight-box',
-    ];
-
-    // Selecciona todos los elementos que coincidan y aún no tengan data-reveal
-    const candidates = document.querySelectorAll(SELECTORS.join(','));
-
-    candidates.forEach(function (el) {
-      if (el.hasAttribute('data-reveal')) return; // ya marcado manualmente
-
-      // Decide si es hijo de un grid → stagger
-      const parent = el.parentElement;
-      const siblings = parent
-        ? Array.from(parent.children).filter(function (c) {
-          return c.matches(SELECTORS.join(','));
-        })
-        : [];
-      const idx = siblings.indexOf(el);
-
-      el.setAttribute('data-reveal', '');
-      if (idx > 0 && idx <= 5) {
-        el.setAttribute('data-reveal-delay', String(idx));
-      }
-    });
-
-    // IntersectionObserver: añade .revealed cuando el elemento entra en pantalla
-    if (!('IntersectionObserver' in window)) {
-      // Fallback: muestra todo si el navegador no soporta IO
-      document.querySelectorAll('[data-reveal]').forEach(function (el) {
-        el.classList.add('revealed');
-      });
-      return;
-    }
-
-    const observer = new IntersectionObserver(
-      function (entries) {
-        entries.forEach(function (entry) {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('revealed');
-            observer.unobserve(entry.target); // se anima solo una vez
-          }
-        });
-      },
-      { threshold: 0.08, rootMargin: '0px 0px -40px 0px' }
-    );
-
-    document.querySelectorAll('[data-reveal]').forEach(function (el) {
-      observer.observe(el);
-    });
-  }
-
   function init() {
     injectStyles();
     injectNav();
@@ -900,7 +818,6 @@ mark {
     initSearch();
     initHamburger();
     initNavScroll();
-    setTimeout(initScrollReveal, 80);
   }
 
   if (document.readyState === 'loading') {
