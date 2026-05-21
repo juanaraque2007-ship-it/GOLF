@@ -2954,7 +2954,8 @@ body.a11y-dark-mode .doc-block,
 body.a11y-dark-mode .mapa-lista-item,
 body.a11y-dark-mode .stats-clubes,
 body.a11y-dark-mode .stat-provincia,
-body.a11y-dark-mode .mapa-legend {
+body.a11y-dark-mode .mapa-legend,
+body.a11y-dark-mode .live-scoring-card {
   background: var(--color-surface) !important;
   border-color: var(--color-border) !important;
   color: var(--color-text) !important;
@@ -2966,6 +2967,10 @@ body.a11y-dark-mode .mapa-lista-nombre,
 body.a11y-dark-mode .stat-prov-num,
 body.a11y-dark-mode .legend-item {
   color: var(--color-text) !important;
+}
+
+body.a11y-dark-mode .app-highlight {
+  color: var(--gold-light) !important;
 }
 
 /* Evitar tocar el cuadro del mapa en sí (como pidió el usuario) */
