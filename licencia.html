@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Licencia y Hándicap — Federación de Golf de Castilla-La Mancha</title>
+  <meta name="description" content="Información sobre licencia federativa, hándicap, trámites, cuotas y seguros de la Federación de Golf de Castilla-La Mancha.">
   <link rel="icon" type="image/png" href="img/favicon_pagina.png">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
@@ -20,43 +21,81 @@
       border-bottom: 2px solid var(--gold);
     }
     .intro-text { font-size: 15px; color: var(--gray-600); line-height: 1.8; max-width: 720px; margin-bottom: 48px; }
-    .cuotas-grid {
+
+    /* ── Cards de enlaces ── */
+    .licencia-cards {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
       gap: 20px;
       margin-bottom: 56px;
     }
-    .cuota-card {
+    .licencia-card {
+      display: flex; align-items: center; gap: 20px;
       background: var(--white);
       border: 1.5px solid var(--gray-100);
-      padding: 28px 22px;
-      text-align: center;
-      transition: all 0.2s;
+      padding: 28px 26px;
+      text-decoration: none; color: inherit;
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
     }
-    .cuota-card:hover { border-color: var(--gold); }
-    .cuota-card.destacado {
-      border-color: var(--green-accent);
-      background: var(--green-light);
+    .licencia-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 4px; height: 100%;
+      background: var(--gold);
+      transform: scaleY(0);
+      transition: transform 0.3s ease;
+      transform-origin: top;
     }
-    .cuota-tipo { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--gray-300); margin-bottom: 10px; }
-    .cuota-precio { font-family: var(--font-display); font-size: 2.2rem; font-weight: 700; color: var(--green-dark); line-height: 1; }
-    .cuota-anno { font-size: 12px; color: var(--gray-300); margin-bottom: 14px; }
-    .cuota-incluye { font-size: 12px; color: var(--gray-600); line-height: 1.6; }
-    .pasos-list { list-style: none; margin-bottom: 48px; }
-    .paso-item {
-      display: flex; gap: 20px; align-items: flex-start;
-      padding: 20px 0;
-      border-bottom: 1px solid var(--gray-100);
+    .licencia-card:hover {
+      border-color: var(--gold);
+      box-shadow: 0 8px 28px rgba(10,61,46,0.08);
+      transform: translateY(-2px);
     }
-    .paso-num {
-      width: 36px; height: 36px; border-radius: 50%;
-      background: var(--green-dark); color: var(--white);
+    .licencia-card:hover::before { transform: scaleY(1); }
+    .licencia-card-icon {
+      width: 52px; height: 52px; flex-shrink: 0;
       display: flex; align-items: center; justify-content: center;
-      font-weight: 700; font-size: 14px; flex-shrink: 0;
+      background: var(--green-light);
+      border-radius: 8px;
+      color: var(--green-dark);
+      transition: all 0.3s ease;
     }
-    .paso-content { flex: 1; }
-    .paso-titulo { font-weight: 700; color: var(--green-dark); margin-bottom: 4px; }
-    .paso-desc { font-size: 13px; color: var(--gray-600); line-height: 1.6; }
+    .licencia-card:hover .licencia-card-icon {
+      background: var(--green-dark);
+      color: var(--gold);
+    }
+    .licencia-card-body { flex: 1; min-width: 0; }
+    .licencia-card-title {
+      font-family: var(--font-display);
+      font-size: 1rem; font-weight: 700;
+      color: var(--green-dark);
+      margin-bottom: 6px;
+      transition: color 0.2s;
+    }
+    .licencia-card:hover .licencia-card-title { color: var(--green-accent); }
+    .licencia-card-desc {
+      font-size: 12.5px; color: var(--gray-300);
+      line-height: 1.5;
+    }
+    .licencia-card-arrow {
+      flex-shrink: 0; color: var(--gray-200);
+      transition: all 0.3s ease;
+    }
+    .licencia-card:hover .licencia-card-arrow {
+      color: var(--gold);
+      transform: translateX(4px);
+    }
+    .licencia-card-external {
+      display: inline-flex; align-items: center; gap: 4px;
+      font-size: 10px; font-weight: 700; color: var(--gray-200);
+      text-transform: uppercase; letter-spacing: 1px;
+      margin-top: 4px;
+    }
+
+    /* ── Info general (mantener contenido existente debajo) ── */
     .handicap-box {
       background: var(--gray-50);
       border: 1px solid var(--gray-100);
@@ -65,8 +104,12 @@
     }
     .handicap-box p { font-size: 14px; color: var(--gray-600); line-height: 1.7; margin-bottom: 14px; }
     .handicap-box p:last-child { margin-bottom: 0; }
+
     @media (max-width: 1100px) { .licencia-section { padding: 48px 2.5rem; } }
-    @media (max-width: 640px) { .licencia-section { padding: 32px 1.25rem; } }
+    @media (max-width: 640px) {
+      .licencia-section { padding: 32px 1.25rem; }
+      .licencia-cards { grid-template-columns: 1fr; }
+    }
   </style>
 </head>
 <body>
@@ -84,77 +127,88 @@
     La licencia federativa es el documento que acredita tu condición de jugador/a de golf federado/a en Castilla-La Mancha. Te permite participar en competiciones oficiales, obtener y mantener tu hándicap WHS, y acceder a los seguros de accidente y responsabilidad civil de la federación.
   </p>
 
-  <div class="block-title">Cuotas de Licencia 2026</div>
-  <div class="cuotas-grid">
-    <div class="cuota-card">
-      <div class="cuota-tipo">Licencia Adulto</div>
-      <div class="cuota-precio">55€</div>
-      <div class="cuota-anno">/ temporada 2026</div>
-      <div class="cuota-incluye">Seguro de accidente · Seguro RC · Hándicap WHS · Participación en torneos FGCLM</div>
-    </div>
-    <div class="cuota-card destacado">
-      <div class="cuota-tipo">Licencia Juvenil</div>
-      <div class="cuota-precio">30€</div>
-      <div class="cuota-anno">/ temporada 2026</div>
-      <div class="cuota-incluye">Jugadores Sub-18 · Seguro de accidente · Hándicap WHS · Circuito Juvenil CLM</div>
-    </div>
-    <div class="cuota-card">
-      <div class="cuota-tipo">Licencia Senior</div>
-      <div class="cuota-precio">45€</div>
-      <div class="cuota-anno">/ temporada 2026</div>
-      <div class="cuota-incluye">Mayores de 55 años · Seguro de accidente · Hándicap WHS · Torneos Senior CLM</div>
-    </div>
-    <div class="cuota-card">
-      <div class="cuota-tipo">Licencia Profesional</div>
-      <div class="cuota-precio">80€</div>
-      <div class="cuota-anno">/ temporada 2026</div>
-      <div class="cuota-incluye">Profesionales PGA · Seguro RC profesional · Participación en torneos pro-am</div>
-    </div>
-    <div class="cuota-card">
-      <div class="cuota-tipo">Licencia Pitch & Putt</div>
-      <div class="cuota-precio">30€</div>
-      <div class="cuota-anno">/ temporada 2026</div>
-      <div class="cuota-incluye">Modalidad P&P · Seguro de accidente · Hándicap · Competiciones P&P autonómicas</div>
-    </div>
-    <div class="cuota-card">
-      <div class="cuota-tipo">Licencia Golf Adaptado</div>
-      <div class="cuota-precio">20€</div>
-      <div class="cuota-anno">/ temporada 2026</div>
-      <div class="cuota-incluye">Diversidad funcional · Seguro de accidente · Programa de golf adaptado FGCLM</div>
-    </div>
-  </div>
+  <div class="block-title">Gestiones y Servicios</div>
+  <div class="licencia-cards">
 
-  <div class="block-title">Cómo Federarse</div>
-  <ul class="pasos-list">
-    <li class="paso-item">
-      <div class="paso-num">1</div>
-      <div class="paso-content">
-        <div class="paso-titulo">Contacta con un club federado</div>
-        <div class="paso-desc">La tramitación de la licencia se realiza a través de tu club de golf. Dirígete al secretario o administrador de tu club para iniciar el proceso de alta federativa. Consulta el directorio de clubes en la sección <a href="clubes.html" style="color:var(--green-accent);">Clubes Federados</a>.</div>
+    <!-- 1. Trámites y Cuotas (interno) -->
+    <a href="licenHandi/tramites-cuotas.html" class="licencia-card" id="card-tramites">
+      <div class="licencia-card-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
       </div>
-    </li>
-    <li class="paso-item">
-      <div class="paso-num">2</div>
-      <div class="paso-content">
-        <div class="paso-titulo">Rellena el formulario de inscripción</div>
-        <div class="paso-desc">Cumplimenta el formulario de solicitud de licencia con tus datos personales: nombre completo, DNI/NIE, fecha de nacimiento, domicilio y correo electrónico. Los menores de edad requieren autorización del padre, madre o tutor legal.</div>
+      <div class="licencia-card-body">
+        <div class="licencia-card-title">Trámites y Cuotas</div>
+        <div class="licencia-card-desc">Cómo obtener la licencia federativa, tramitación, categorías e importes anuales.</div>
       </div>
-    </li>
-    <li class="paso-item">
-      <div class="paso-num">3</div>
-      <div class="paso-content">
-        <div class="paso-titulo">Abona la cuota correspondiente</div>
-        <div class="paso-desc">El pago se realiza a través del club, que a su vez lo gestiona con la federación. Las cuotas varían según la categoría (adulto, juvenil, senior, profesional, etc.) y están actualizadas para la temporada 2026.</div>
+      <div class="licencia-card-arrow">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
       </div>
-    </li>
-    <li class="paso-item">
-      <div class="paso-num">4</div>
-      <div class="paso-content">
-        <div class="paso-titulo">Recibe tu licencia y tu hándicap</div>
-        <div class="paso-desc">Una vez tramitada el alta, recibirás tu número de licencia y podrás acceder al sistema WHS para gestionar tu hándicap. El proceso habitualmente tarda entre 24 y 72 horas hábiles.</div>
+    </a>
+
+    <!-- 2. Seguro de Accidente (interno) -->
+    <a href="licenHandi/seguro-accidente.html" class="licencia-card" id="card-seguro">
+      <div class="licencia-card-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
       </div>
-    </li>
-  </ul>
+      <div class="licencia-card-body">
+        <div class="licencia-card-title">Seguro de Accidente</div>
+        <div class="licencia-card-desc">Pólizas de accidente y responsabilidad civil, protocolos y partes de comunicación.</div>
+      </div>
+      <div class="licencia-card-arrow">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </div>
+    </a>
+
+    <!-- 3. Obtención de Hándicap (interno) -->
+    <a href="licenHandi/obtencion-handicap.html" class="licencia-card" id="card-handicap">
+      <div class="licencia-card-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+      </div>
+      <div class="licencia-card-body">
+        <div class="licencia-card-title">Obtención del Hándicap</div>
+        <div class="licencia-card-desc">Procedimiento, prueba práctica y teórica para conseguir tu hándicap de juego.</div>
+      </div>
+      <div class="licencia-card-arrow">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </div>
+    </a>
+
+    <!-- 4. Consulta de Hándicap (externo RFEG) -->
+    <a href="https://rfegolf.es/PaginasServicios/Servicios.aspx" class="licencia-card" target="_blank" id="card-consulta">
+      <div class="licencia-card-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      </div>
+      <div class="licencia-card-body">
+        <div class="licencia-card-title">Consulta de Hándicap</div>
+        <div class="licencia-card-desc">Accede al portal de la RFEG para consultar tu hándicap actual y servicios online.</div>
+        <div class="licencia-card-external">
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          Enlace externo · RFEG
+        </div>
+      </div>
+      <div class="licencia-card-arrow">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </div>
+    </a>
+
+    <!-- 5. Ficha de Hándicap (externo RFEG) -->
+    <a href="https://rfegolf.es/PaginasServicios/areadeljugador.aspx" class="licencia-card" target="_blank" id="card-ficha">
+      <div class="licencia-card-icon">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      </div>
+      <div class="licencia-card-body">
+        <div class="licencia-card-title">Ficha de Hándicap</div>
+        <div class="licencia-card-desc">Área del jugador en la RFEG: ficha personal, historial de rondas y hándicap WHS.</div>
+        <div class="licencia-card-external">
+          <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+          Enlace externo · RFEG
+        </div>
+      </div>
+      <div class="licencia-card-arrow">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </div>
+    </a>
+
+  </div>
 
   <div class="block-title">Sistema de Hándicap WHS</div>
   <div class="handicap-box">
