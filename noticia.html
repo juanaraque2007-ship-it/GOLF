@@ -94,11 +94,31 @@
 
     /* ══ CONTENIDO COMPLETO del WordPress ══ */
     .noticia-wp-content {
-      font-size: 15.5px; line-height: 1.9; color: var(--gray-900);
+      font-size: 16.5px; line-height: 1.8; color: var(--gray-800);
     }
     .noticia-wp-content * { font-family: inherit !important; }
-    .noticia-wp-content p { margin-bottom: 18px; font-size: 15.5px !important; line-height: 1.9 !important; }
-    .noticia-wp-content strong, .noticia-wp-content b { font-weight: 700; color: var(--green-dark); }
+    .noticia-wp-content p { margin-bottom: 26px; font-size: 16.5px !important; line-height: 1.8 !important; }
+    
+    /* Entradilla (Lead paragraph) estilo editorial */
+    .noticia-wp-content > p:first-of-type {
+      font-family: var(--font-display) !important;
+      font-size: 21px !important;
+      line-height: 1.6 !important;
+      color: var(--green-dark);
+      margin-bottom: 32px;
+    }
+    
+    .noticia-wp-content strong, .noticia-wp-content b { font-weight: 600; color: var(--green-dark); }
+    
+    /* Blockquotes estilo premium */
+    .noticia-wp-content blockquote {
+      margin: 40px 0; padding: 24px 32px;
+      border-left: 3px solid var(--green-accent);
+      background: linear-gradient(to right, rgba(45,158,107,0.06), transparent);
+      font-family: var(--font-display); font-style: italic; font-size: 20px;
+      line-height: 1.5; color: var(--green-dark);
+      border-radius: 0 12px 12px 0;
+    }
     .noticia-wp-content .entry-top { display: none; }
     .noticia-wp-content article, .noticia-wp-content .entry, .noticia-wp-content .post {
       border: none !important; padding: 0 !important; margin: 0 !important;
@@ -199,13 +219,6 @@
     .relacionadas-titulo { font-family: var(--font-display); font-size: 11.5px; font-weight: 700; color: var(--green-dark); line-height: 1.3; transition: color 0.2s; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
     .relacionadas-fecha { font-size: 10px; color: var(--gray-300); margin-top: 3px; }
 
-    /* ══ NAV PREV/NEXT ══ */
-    .desktop-nav-wrap { background: var(--gray-50); border-top: 1px solid var(--gray-100); padding: 28px 6rem; display: flex; gap: 16px; justify-content: space-between; flex-wrap: wrap; }
-    .noticia-nav-btn { display: flex; flex-direction: column; gap: 4px; text-decoration: none; padding: 14px 22px; background: var(--white); border: 1px solid var(--gray-100); border-radius: 6px; width: 48%; transition: all 0.2s; }
-    .noticia-nav-btn:hover { border-color: var(--gold); box-shadow: 0 4px 14px rgba(10,61,46,0.08); }
-    .noticia-nav-label { font-size: 10px; font-weight: 700; color: var(--gray-300); text-transform: uppercase; letter-spacing: 1px; }
-    .noticia-nav-titulo { font-family: var(--font-display); font-size: 13px; font-weight: 700; color: var(--green-dark); line-height: 1.3; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-
     /* ══ LOADING / ERROR ══ */
     .noticia-loading { min-height: 400px; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 16px; color: var(--gray-300); }
     .noticia-loading-spinner { width: 40px; height: 40px; border: 3px solid var(--gray-100); border-top-color: var(--green-accent); border-radius: 50%; animation: spin 0.8s linear infinite; }
@@ -215,20 +228,14 @@
       .noticia-hero-content { padding: 40px 2.5rem 36px; } 
       .noticia-body-wrap { padding: 40px 2.5rem; grid-template-columns: 1fr; } 
       .noticia-sidebar { position: static; } 
-      .desktop-nav-wrap { display: none !important; }
-      .mobile-nav-wrap { display: flex; flex-direction: column; gap: 12px; margin-bottom: 24px; }
-      .mobile-nav-wrap .noticia-nav-btn { width: 100%; max-width: 100%; }
       .sidebar-datos-card { order: 1; }
       .sidebar-relac-card { order: 2; }
-      .mobile-nav-wrap { order: 3; }
       .sidebar-patroc-card { order: 4; margin-top: 10px; }
     }
     @media (max-width: 640px) { 
       .noticia-hero { min-height: 340px; } 
       .noticia-hero-content { padding: 30px 1.25rem 26px; } 
       .noticia-body-wrap { padding: 24px 1.25rem; gap: 32px; } 
-      .desktop-nav-wrap { padding: 18px 1.25rem; } 
-      .noticia-nav-btn { width: 100%; max-width: 100%; } 
     }
   </style>
 </head>
@@ -274,8 +281,23 @@
   /* ── Limpia el HTML de WordPress ── */
   function sanitizeWP(html) {
     if (!html) return '';
+
+    // Estructurar el texto en párrafos para mejorar la legibilidad (estilo noticiero)
+    html = html.replace(/\r\n/g, '\n');
+    html = html.split(/\n\n+/).map(function(block) {
+      block = block.trim();
+      if (!block) return '';
+      if (block.match(/^<\/?(div|article|section|p|h[1-6]|table|ul|ol|li|blockquote|header|footer|aside|nav|figure|figcaption|hr|!--|script|style|iframe|video|audio|form)/i)) {
+        return block;
+      }
+      return '<p>' + block.replace(/\n/g, '<br>') + '</p>';
+    }).join('\n\n');
+
     var tmp = document.createElement('div');
     tmp.innerHTML = html;
+
+    // La estructuración de texto es suficiente sin dropcap
+
     // Eliminar elementos WP que no aplican
     tmp.querySelectorAll('h1, script, style, .post-thumbnail, .entry-meta, .post-header, .post-footer, .share-buttons, .comments-area, #respond, [class*="comment"], .entry-top, form, input, button, [class*="wp-block-button"]').forEach(function(el){ el.remove(); });
     // Eliminar links (sin destino externo)
@@ -299,8 +321,8 @@
     return tmp.innerHTML.trim();
   }
 
-  /* ── Sidebar y Nav ── */
-  function buildSidebar(rel, navHtml) {
+  /* ── Sidebar ── */
+  function buildSidebar(rel) {
     var principal = PATROS.find(function(p){ return p.tipo==='principal'; });
     var colabs    = PATROS.filter(function(p){ return p.tipo==='colab'; });
     var grid      = PATROS.filter(function(p){ return p.tipo==='grid'; });
@@ -324,7 +346,6 @@
       // Relacionadas
       +'<div class="sidebar-card sidebar-relac-card"><div class="sidebar-card-title">Noticias relacionadas</div><div class="sidebar-card-body">'+relHtml+'</div></div>'
       // Nav Mobile
-      +(navHtml ? '<div class="mobile-nav-wrap">'+navHtml+'</div>' : '')
       // Patrocinadores
       +'<div class="sidebar-card sidebar-patroc-card"><div class="sidebar-card-title">Patrocinadores</div><div class="sidebar-card-body">'
         +'<div class="patroc-main-s"><div class="patroc-main-s-label">Patrocinador oficial</div>'
@@ -359,16 +380,14 @@
       var idx = data.findIndex(function(n){ return n.id === noticiaId; });
       if (idx === -1) { showError('Noticia no encontrada. <a href="noticias.html">Volver al archivo</a>'); return; }
       var n    = data[idx];
-      var prev = idx > 0               ? data[idx-1] : null;
-      var next = idx < data.length - 1 ? data[idx+1] : null;
       var cat0 = (n.categorias&&n.categorias[0]) || '';
       var rel  = data.filter(function(x){ return x.id!==n.id && x.categorias && x.categorias.includes(cat0); }).slice(0,4);
       document.title = (n.titulo||'Noticia') + ' — FGCLM';
-      renderPage(n, prev, next, rel);
+      renderPage(n, rel);
     })
     .catch(function(err){ showError('Error al cargar: '+err.message); });
 
-  function renderPage(n, prev, next, rel) {
+  function renderPage(n, rel) {
     var catsHtml = (n.categorias||[]).map(function(c){ return '<span class="noticia-cat-badge">'+esc(c)+'</span>'; }).join('');
 
     /* Imagen */
@@ -378,11 +397,6 @@
 
     /* Contenido completo, limpio */
     var content = sanitizeWP(n.contenido_html || '');
-
-    /* Nav */
-    var prevHtml = prev ? '<a href="noticia.html?id='+prev.id+'" class="noticia-nav-btn"><span class="noticia-nav-label">← Más reciente</span><span class="noticia-nav-titulo">'+esc(prev.titulo)+'</span></a>' : '';
-    var nextHtml = next ? '<a href="noticia.html?id='+next.id+'" class="noticia-nav-btn" style="text-align:right;margin-left:auto;"><span class="noticia-nav-label">Más antigua →</span><span class="noticia-nav-titulo">'+esc(next.titulo)+'</span></a>' : '';
-    var navHtml = (prevHtml || nextHtml) ? prevHtml + nextHtml : '';
 
     document.getElementById('noticiaApp').innerHTML =
       /* HERO */
@@ -402,11 +416,9 @@
           + imgHtml
           + (n.excerpt ? '<p class="noticia-excerpt-pull">'+esc(n.excerpt)+'</p>' : '')
           +'<div class="noticia-wp-content">'+(content||'<p>'+esc(n.excerpt||'Contenido no disponible.')+'</p>')+'</div>'
-          +'<div class="noticia-footer-note">Noticias de la Federación de Golf de Castilla-La Mancha</div>'
         +'</article>'
-        +'<aside class="noticia-sidebar">'+buildSidebar(rel, navHtml)+'</aside>'
-      +'</div>'
-      +(navHtml ? '<div class="desktop-nav-wrap">'+navHtml+'</div>' : '');
+        +'<aside class="noticia-sidebar">'+buildSidebar(rel)+'</aside>'
+      +'</div>';
 
     /* Datos sidebar */
     var datos = document.getElementById('sidebarDatos');
