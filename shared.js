@@ -521,7 +521,7 @@
     });
   }
 
-  // ── LANGUAGE SELECTOR ──────────────────────────────────────────
+  // ── LANGUAGE SELECTOR (Google Translate Integration) ──────────────
   function initLangSelector() {
     const selector = document.getElementById('langSelector');
     const toggle = document.getElementById('langToggle');
@@ -529,8 +529,52 @@
     const current = document.getElementById('langCurrent');
     if (!selector || !toggle || !dropdown) return;
 
-    // Restore saved language preference
     const savedLang = localStorage.getItem('fgclm-lang') || 'es';
+
+    function triggerTranslation(lang) {
+      const gtCombo = document.querySelector('.goog-te-combo');
+      if (gtCombo) {
+        gtCombo.value = lang;
+        gtCombo.dispatchEvent(new Event('change'));
+      }
+    }
+
+    function loadGoogleTranslate(targetLang) {
+      if (!document.getElementById('google_translate_element')) {
+        const gtDiv = document.createElement('div');
+        gtDiv.id = 'google_translate_element';
+        document.body.appendChild(gtDiv);
+
+        window.googleTranslateElementInit = function() {
+          new google.translate.TranslateElement({
+            pageLanguage: 'es', 
+            includedLanguages: 'es,en', 
+            autoDisplay: false
+          }, 'google_translate_element');
+          
+          // Poll for the combo box and translate once ready
+          const checkExist = setInterval(function() {
+            if (document.querySelector('.goog-te-combo')) {
+              clearInterval(checkExist);
+              triggerTranslation(targetLang);
+            }
+          }, 100);
+        };
+
+        const gtScript = document.createElement('script');
+        gtScript.src = 'https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
+        document.body.appendChild(gtScript);
+      } else {
+        triggerTranslation(targetLang);
+      }
+    }
+
+    // Auto-translate on load if preference is English
+    if (savedLang === 'en') {
+      loadGoogleTranslate('en');
+    }
+
+    // Sync UI with current language
     current.textContent = savedLang.toUpperCase();
     dropdown.querySelectorAll('.lang-option').forEach(function(opt) {
       opt.classList.toggle('active', opt.dataset.lang === savedLang);
@@ -562,14 +606,33 @@
     dropdown.querySelectorAll('.lang-option').forEach(function(opt) {
       opt.addEventListener('click', function(e) {
         e.stopPropagation();
-        const lang = opt.dataset.lang;
-        current.textContent = lang.toUpperCase();
+        const lang = opt.dataset.lang; // 'es' or 'en'
+        
+        if (lang === localStorage.getItem('fgclm-lang')) {
+          closeDropdown();
+          return; // No change needed
+        }
+
+        // Save preference
         localStorage.setItem('fgclm-lang', lang);
-        dropdown.querySelectorAll('.lang-option').forEach(function(o) {
-          o.classList.toggle('active', o === opt);
-        });
-        closeDropdown();
+
+        if (lang === 'en') {
+          // Switch to English dynamically without reloading
+          loadGoogleTranslate('en');
+          
+          // Update UI immediately
+          current.textContent = lang.toUpperCase();
+          dropdown.querySelectorAll('.lang-option').forEach(function(o) {
+            o.classList.toggle('active', o === opt);
+          });
+          closeDropdown();
+        } else {
+          // Switch back to Spanish (original). Cleanest way is to reload.
+          // Since localStorage is 'es', GT script won't even load.
+          window.location.reload();
+        }
       });
+      
       opt.addEventListener('keydown', function(e) {
         if (e.key === 'Enter' || e.key === ' ') {
           e.preventDefault();

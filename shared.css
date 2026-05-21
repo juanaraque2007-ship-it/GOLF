@@ -2938,9 +2938,39 @@ body.a11y-dark-mode {
 body.a11y-dark-mode section,
 body.a11y-dark-mode .areas-section,
 body.a11y-dark-mode .noticias-section,
-body.a11y-dark-mode .calendario-section {
+body.a11y-dark-mode .calendario-section,
+body.a11y-dark-mode .subv-section,
+body.a11y-dark-mode .mapa-section,
+body.a11y-dark-mode .clubes-section,
+body.a11y-dark-mode .filtros-clubes,
+body.a11y-dark-mode .historic-section {
   background: var(--color-background) !important;
   color: var(--color-text) !important;
+  border-color: var(--color-border) !important;
+}
+
+body.a11y-dark-mode .info-box,
+body.a11y-dark-mode .doc-block,
+body.a11y-dark-mode .mapa-lista-item,
+body.a11y-dark-mode .stats-clubes,
+body.a11y-dark-mode .stat-provincia,
+body.a11y-dark-mode .mapa-legend {
+  background: var(--color-surface) !important;
+  border-color: var(--color-border) !important;
+  color: var(--color-text) !important;
+}
+
+body.a11y-dark-mode .info-box p,
+body.a11y-dark-mode .info-box strong,
+body.a11y-dark-mode .mapa-lista-nombre,
+body.a11y-dark-mode .stat-prov-num,
+body.a11y-dark-mode .legend-item {
+  color: var(--color-text) !important;
+}
+
+/* Evitar tocar el cuadro del mapa en sí (como pidió el usuario) */
+body.a11y-dark-mode .mapa-svg-container {
+  background: var(--gray-50); /* mantener color original */
 }
 
 body.a11y-dark-mode .section-title {
@@ -2955,7 +2985,7 @@ body.a11y-dark-mode .section-label::before {
   background: var(--gold) !important;
 }
 
-/* Cards */
+/* Cards & Boxes sitewide */
 body.a11y-dark-mode .area-card,
 body.a11y-dark-mode .noticia-card,
 body.a11y-dark-mode .evento-card,
@@ -2963,19 +2993,117 @@ body.a11y-dark-mode .club-card,
 body.a11y-dark-mode .ranking-card,
 body.a11y-dark-mode .modalidad-card,
 body.a11y-dark-mode .precio-card,
-body.a11y-dark-mode .profesor-card {
+body.a11y-dark-mode .profesor-card,
+body.a11y-dark-mode .rfeg-card,
+body.a11y-dark-mode .junta-card,
+body.a11y-dark-mode .asamblea-info,
+body.a11y-dark-mode .tratamiento-card,
+body.a11y-dark-mode .content-card,
+body.a11y-dark-mode .meta-box,
+body.a11y-dark-mode .section-block,
+body.a11y-dark-mode .torneo-card,
+body.a11y-dark-mode .licencia-card,
+body.a11y-dark-mode .paso-card,
+body.a11y-dark-mode .comite-block,
+body.a11y-dark-mode .reglas-card,
+body.a11y-dark-mode .escuela-card,
+body.a11y-dark-mode .doc-item,
+body.a11y-dark-mode .carta-box,
+body.a11y-dark-mode .contact-card,
+body.a11y-dark-mode .contact-form,
+body.a11y-dark-mode .circulares-box,
+body.a11y-dark-mode .handicap-box {
   background: var(--color-surface) !important;
   border-color: var(--color-border) !important;
   color: var(--color-text) !important;
 }
 
-body.a11y-dark-mode .area-title,
-body.a11y-dark-mode .area-desc {
+/* Text colors for descriptions and content in dark mode */
+body.a11y-dark-mode .area-desc,
+body.a11y-dark-mode .club-detail,
+body.a11y-dark-mode .club-detail strong,
+body.a11y-dark-mode .rfeg-card p,
+body.a11y-dark-mode .asamblea-info p,
+body.a11y-dark-mode .tratamiento-card p,
+body.a11y-dark-mode .tratamiento-card h3,
+body.a11y-dark-mode .content-card p,
+body.a11y-dark-mode .torneo-nombre,
+body.a11y-dark-mode .torneo-fecha,
+body.a11y-dark-mode .torneo-campo,
+body.a11y-dark-mode .licencia-card h2,
+body.a11y-dark-mode .licencia-card p,
+body.a11y-dark-mode .paso-card h3,
+body.a11y-dark-mode .paso-card p,
+body.a11y-dark-mode .comite-cargo,
+body.a11y-dark-mode .comite-nombre,
+body.a11y-dark-mode .reglas-card h3,
+body.a11y-dark-mode .reglas-card p,
+body.a11y-dark-mode .escuela-card h3,
+body.a11y-dark-mode .escuela-card p,
+body.a11y-dark-mode .doc-item-title,
+body.a11y-dark-mode .doc-item-meta,
+body.a11y-dark-mode .carta-box p,
+body.a11y-dark-mode .carta-box h2,
+body.a11y-dark-mode .contact-card p,
+body.a11y-dark-mode .contact-card h3,
+body.a11y-dark-mode .circulares-box p,
+body.a11y-dark-mode .circulares-box h3,
+body.a11y-dark-mode .handicap-box p,
+body.a11y-dark-mode .modalidad-desc,
+body.a11y-dark-mode .precio-nombre,
+body.a11y-dark-mode .precio-detalle,
+body.a11y-dark-mode .precio-incluye li,
+body.a11y-dark-mode .form-card-desc,
+body.a11y-dark-mode .profesor-bio,
+body.a11y-dark-mode .historic-year a,
+body.a11y-dark-mode .historic-year span {
   color: var(--color-text) !important;
 }
 
-body.a11y-dark-mode .area-tag {
+/* Titles that were dark green are now Gold in dark mode */
+body.a11y-dark-mode .area-tag,
+body.a11y-dark-mode .junta-block-title,
+body.a11y-dark-mode .area-title,
+body.a11y-dark-mode .rfeg-card h2,
+body.a11y-dark-mode .junta-card-nombre,
+body.a11y-dark-mode .junta-sub-title,
+body.a11y-dark-mode .licencia-card-title,
+body.a11y-dark-mode .comite-nombre,
+body.a11y-dark-mode .doc-item-title,
+body.a11y-dark-mode .carta-box h2,
+body.a11y-dark-mode .contact-card h3,
+body.a11y-dark-mode .circulares-box h3,
+body.a11y-dark-mode .tratamiento-card h3,
+body.a11y-dark-mode .torneo-nombre,
+body.a11y-dark-mode .licencia-card h2,
+body.a11y-dark-mode .paso-card h3,
+body.a11y-dark-mode .reglas-card h3,
+body.a11y-dark-mode .escuela-card h3,
+body.a11y-dark-mode .modalidad-title,
+body.a11y-dark-mode .precio-valor,
+body.a11y-dark-mode .form-card-title,
+body.a11y-dark-mode .profesor-nombre,
+body.a11y-dark-mode .section-title,
+body.a11y-dark-mode .ranking-card h3 {
   color: var(--gold) !important;
+}
+
+/* Fix contrast for clubes badges & buttons */
+body.a11y-dark-mode .club-hoyos,
+body.a11y-dark-mode .club-tipo-badge,
+body.a11y-dark-mode .tipo-verde,
+body.a11y-dark-mode .tipo-pp,
+body.a11y-dark-mode .tipo-rustico {
+  background: var(--color-background) !important;
+  color: var(--gold-light) !important;
+  border: 1px solid var(--color-border) !important;
+}
+
+body.a11y-dark-mode .club-btn-tel,
+body.a11y-dark-mode .club-btn-web {
+  background: var(--color-background) !important;
+  color: var(--color-text) !important;
+  border: 1px solid var(--color-border) !important;
 }
 
 body.a11y-dark-mode .area-link span {
@@ -3023,7 +3151,9 @@ body.a11y-dark-mode a {
 }
 
 body.a11y-dark-mode h1, body.a11y-dark-mode h2,
-body.a11y-dark-mode h3, body.a11y-dark-mode h4 {
+body.a11y-dark-mode h3, body.a11y-dark-mode h4,
+body.a11y-dark-mode .block-title,
+body.a11y-dark-mode .mapa-section-title {
   color: var(--color-text) !important;
 }
 
@@ -3105,5 +3235,44 @@ html.a11y-filter-tritanopia {
 
 html.a11y-filter-grayscale {
   filter: url(#a11y-grayscale);
+}
+
+/* ========================================================
+   GOOGLE TRANSLATE — Ocultar UI por defecto
+   ======================================================== */
+/* Ocultar el iframe del banner superior */
+.goog-te-banner-frame.skiptranslate,
+iframe.goog-te-banner-frame,
+.VIpgJd-ZVi9od-ORHb-OEVmcd {
+  display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
+}
+
+/* Forzar que el body no se desplace hacia abajo */
+html, body {
+  top: 0px !important; 
+  position: relative !important;
+  margin-top: 0 !important;
+}
+
+/* Ocultar el div contenedor */
+#google_translate_element {
+  display: none !important;
+}
+
+/* Ocultar tooltips al hacer hover sobre texto traducido */
+.goog-tooltip {
+  display: none !important;
+}
+.goog-tooltip:hover {
+  display: none !important;
+}
+
+/* Quitar fondo amarillo de resaltado al hacer hover */
+.goog-text-highlight {
+  background-color: transparent !important;
+  border: none !important; 
+  box-shadow: none !important;
 }
 
