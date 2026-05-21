@@ -3016,7 +3016,25 @@ body.a11y-dark-mode .handicap-box,
 body.a11y-dark-mode .mes-bloque,
 body.a11y-dark-mode .mes-resaltado,
 body.a11y-dark-mode .filtros-container,
-body.a11y-dark-mode .resultados-anteriores {
+body.a11y-dark-mode .resultados-anteriores,
+body.a11y-dark-mode .form-card,
+body.a11y-dark-mode .prueba-card,
+body.a11y-dark-mode .nota-importante,
+body.a11y-dark-mode .listado-section,
+body.a11y-dark-mode .filtros-section,
+body.a11y-dark-mode .noticia-fila,
+body.a11y-dark-mode .patroc-sidebar-inner,
+body.a11y-dark-mode .patroc-main,
+body.a11y-dark-mode .patroc-colab-item,
+body.a11y-dark-mode .patroc-logo-item,
+body.a11y-dark-mode .autocomplete-dropdown,
+body.a11y-dark-mode .pag-btn,
+body.a11y-dark-mode .filtros-row input,
+body.a11y-dark-mode .filtros-row select,
+body.a11y-dark-mode .buscador-container input,
+body.a11y-dark-mode .ranking-table td,
+body.a11y-dark-mode .cookies-table td,
+body.a11y-dark-mode .tabla-resultados th {
   background: var(--color-surface) !important;
   border-color: var(--color-border) !important;
   color: var(--color-text) !important;
@@ -3075,7 +3093,20 @@ body.a11y-dark-mode .historic-year span,
 body.a11y-dark-mode .sidebar-info-value,
 body.a11y-dark-mode .filtros-container select,
 body.a11y-dark-mode .nombre-torneo,
-body.a11y-dark-mode .lugar {
+body.a11y-dark-mode .lugar,
+body.a11y-dark-mode .prueba-titulo,
+body.a11y-dark-mode .prueba-lugar,
+body.a11y-dark-mode .noticia-fila-excerpt,
+body.a11y-dark-mode .noticia-fecha,
+body.a11y-dark-mode .patroc-colab-name,
+body.a11y-dark-mode .patroc-main-name,
+body.a11y-dark-mode .result-count,
+body.a11y-dark-mode .pag-btn,
+body.a11y-dark-mode .autocomplete-item,
+body.a11y-dark-mode .nota-importante p,
+body.a11y-dark-mode .presidente-bio,
+body.a11y-dark-mode .carta-texto,
+body.a11y-dark-mode .carta-firma-cargo {
   color: var(--color-text) !important;
 }
 
@@ -3130,7 +3161,15 @@ body.a11y-dark-mode .doc-nombre,
 body.a11y-dark-mode .block-title,
 body.a11y-dark-mode .mes-title,
 body.a11y-dark-mode .filtros-container label,
-body.a11y-dark-mode .fecha {
+body.a11y-dark-mode .fecha,
+body.a11y-dark-mode .noticia-fila-titulo,
+body.a11y-dark-mode .profesor-cargo,
+body.a11y-dark-mode .nota-importante h3,
+body.a11y-dark-mode .patroc-sidebar-title,
+body.a11y-dark-mode .presidente-nombre,
+body.a11y-dark-mode .carta-titulo,
+body.a11y-dark-mode .carta-firma-nombre,
+body.a11y-dark-mode .empty-state strong {
   color: var(--gold) !important;
 }
 
