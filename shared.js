@@ -59,7 +59,7 @@
       <ul class="dropdown-menu">
         <li><a href="competiciones.html" data-page="competiciones.html">Calendario</a></li>
         <li><a href="https://rfegolf.es/CompetenciaPaginas/AllCompetitions.aspx">Calendario RFEG</a></li>
-        <li><a href="en-vivo.html" data-page="en-vivo.html"><span class="recording-indicator"></span>En vivo</a></li>
+        <li><a href="seleccion.html" data-page="seleccion.html"><span class="recording-indicator"></span>En vivo</a></li>
       </ul>
     </li>
     <li><a href="escuela.html" data-page="escuela.html">Escuela</a></li>
@@ -69,6 +69,25 @@
   <div class="nav-right" style="display: flex; align-items: center; gap: 16px;">
     <div class="nav-actions">
       <a href="https://rfegolf.es/jugar/handicap" target="blank" class="btn-nav btn-nav-outline">Consultar Hándicap</a>
+      <div class="lang-selector" id="langSelector">
+        <button class="lang-toggle" id="langToggle" aria-label="Cambiar idioma" aria-expanded="false" aria-haspopup="true">
+          <svg class="lang-globe" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          <span class="lang-current" id="langCurrent">ES</span>
+          <svg class="lang-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="lang-dropdown" id="langDropdown" role="menu">
+          <button class="lang-option active" role="menuitem" data-lang="es">
+            <span class="lang-option-code">ES</span>
+            <span class="lang-option-name">Español</span>
+            <svg class="lang-check" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </button>
+          <button class="lang-option" role="menuitem" data-lang="en">
+            <span class="lang-option-code">EN</span>
+            <span class="lang-option-name">English</span>
+            <svg class="lang-check" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </button>
+        </div>
+      </div>
       <div class="dropdown-app nav-app-dropdown">
         <button class="btn-nav btn-nav-gold boton-app-nav">App Torneos ▾</button>
         <div class="dropdown-contenido dropdown-contenido-nav">
@@ -93,6 +112,149 @@
     </button>
   </div>
 </nav>`;
+
+  // ── ACCESSIBILITY PANEL HTML ──────────────────────────────────
+  const A11Y_HTML = `
+<div id="a11yWidget" class="a11y-widget">
+  <!-- Overlay backdrop -->
+  <div class="a11y-overlay" id="a11yOverlay"></div>
+
+  <!-- Sidebar Panel -->
+  <aside class="a11y-panel" id="a11yPanel" role="dialog" aria-modal="true" aria-label="Panel de accesibilidad">
+    <!-- Header -->
+    <div class="a11y-panel-header">
+      <div class="a11y-panel-header-left">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" class="a11y-panel-header-icon">
+          <circle cx="12" cy="4.5" r="2"/>
+          <path d="M12 7.5c-3.5 0-6.5 1.5-6.5 1.5l1 2.5s2.2-1 5.5-1 5.5 1 5.5 1l1-2.5S15.5 7.5 12 7.5z"/>
+          <path d="M10.5 12.5l-2 7h2.5l1-3.5 1 3.5H15.5l-2-7"/>
+        </svg>
+        <span class="a11y-panel-title">Accesibilidad</span>
+      </div>
+      <button class="a11y-panel-close" id="a11yClose" aria-label="Cerrar panel de accesibilidad">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+      </button>
+    </div>
+
+    <div class="a11y-panel-body">
+      <!-- Section 1: Display Mode -->
+      <div class="a11y-section">
+        <div class="a11y-section-label">Modo de visualización</div>
+        <div class="a11y-mode-grid">
+          <button class="a11y-mode-btn active" id="a11yModeLight" role="radio" aria-checked="true" aria-label="Activar modo claro">
+            <span class="a11y-mode-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+            </span>
+            <span class="a11y-mode-text">Modo Claro</span>
+          </button>
+          <button class="a11y-mode-btn" id="a11yModeDark" role="radio" aria-checked="false" aria-label="Activar modo oscuro">
+            <span class="a11y-mode-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+            </span>
+            <span class="a11y-mode-text">Modo Oscuro</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Section 2: Text & Readability -->
+      <div class="a11y-section">
+        <div class="a11y-section-label">Texto y Legibilidad</div>
+
+        <!-- Text Size -->
+        <button class="a11y-option" id="a11yTextSize" role="switch" aria-checked="false">
+          <span class="a11y-option-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7V4h16v3"/><path d="M9 20h6"/><path d="M12 4v16"/></svg>
+          </span>
+          <span class="a11y-option-text">
+            <span class="a11y-option-title">Aumentar Texto</span>
+            <span class="a11y-option-desc">Incrementa el tamaño de la tipografía un 20%</span>
+          </span>
+          <span class="a11y-switch" aria-hidden="true"><span class="a11y-switch-knob"></span></span>
+        </button>
+
+        <!-- Dyslexia Font -->
+        <button class="a11y-option" id="a11yDyslexia" role="switch" aria-checked="false">
+          <span class="a11y-option-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7V4h16v3"/><path d="M9 20h6"/><path d="M12 4v16"/><path d="M7 4l5 16 5-16" opacity="0.3"/></svg>
+          </span>
+          <span class="a11y-option-text">
+            <span class="a11y-option-title">Tipografía para Dislexia</span>
+            <span class="a11y-option-desc">Usa la fuente OpenDyslexic en toda la web</span>
+          </span>
+          <span class="a11y-switch" aria-hidden="true"><span class="a11y-switch-knob"></span></span>
+        </button>
+
+        <!-- Underline Links -->
+        <button class="a11y-option" id="a11yUnderline" role="switch" aria-checked="false">
+          <span class="a11y-option-icon">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3v7a6 6 0 0 0 12 0V3"/><line x1="4" y1="21" x2="20" y2="21"/></svg>
+          </span>
+          <span class="a11y-option-text">
+            <span class="a11y-option-title">Subrayar Enlaces</span>
+            <span class="a11y-option-desc">Subraya todos los enlaces para identificarlos</span>
+          </span>
+          <span class="a11y-switch" aria-hidden="true"><span class="a11y-switch-knob"></span></span>
+        </button>
+      </div>
+
+      <!-- Section 3: Color Blindness -->
+      <div class="a11y-section">
+        <div class="a11y-section-label">Asistencias Visuales</div>
+
+        <div class="a11y-accordion" id="a11yColorBlindAccordion">
+          <button class="a11y-accordion-toggle" id="a11yColorBlindToggle" aria-expanded="false" aria-controls="a11yColorBlindContent">
+            <span class="a11y-option-icon">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a10 10 0 0 1 0 20z" fill="currentColor" opacity="0.15"/><circle cx="8" cy="10" r="2" fill="currentColor" opacity="0.3"/><circle cx="16" cy="10" r="2" fill="currentColor" opacity="0.3"/></svg>
+            </span>
+            <span class="a11y-option-text">
+              <span class="a11y-option-title">Asistencia para Daltonismo</span>
+              <span class="a11y-option-desc">Filtros de color para distintos tipos</span>
+            </span>
+            <svg class="a11y-accordion-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </button>
+
+          <div class="a11y-accordion-content" id="a11yColorBlindContent" role="region" aria-labelledby="a11yColorBlindToggle" hidden>
+            <div class="a11y-cb-grid">
+              <button class="a11y-cb-btn" data-filter="protanopia">
+                <span class="a11y-cb-swatch a11y-cb-proto"></span>
+                <span class="a11y-cb-name">Protanopía</span>
+              </button>
+              <button class="a11y-cb-btn" data-filter="deuteranopia">
+                <span class="a11y-cb-swatch a11y-cb-deuter"></span>
+                <span class="a11y-cb-name">Deuteranopía</span>
+              </button>
+              <button class="a11y-cb-btn" data-filter="tritanopia">
+                <span class="a11y-cb-swatch a11y-cb-trit"></span>
+                <span class="a11y-cb-name">Tritanopía</span>
+              </button>
+              <button class="a11y-cb-btn" data-filter="grayscale">
+                <span class="a11y-cb-swatch a11y-cb-gray"></span>
+                <span class="a11y-cb-name">Escala de Grises</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="a11y-panel-footer">
+      <button class="a11y-reset-btn" id="a11yReset">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>
+        Restablecer todo
+      </button>
+    </div>
+  </aside>
+
+  <!-- FAB -->
+  <button class="a11y-fab" id="a11yToggle" aria-label="Abrir opciones de accesibilidad" tabindex="0">
+    <svg class="a11y-fab-icon" viewBox="0 0 24 24" width="26" height="26" fill="currentColor">
+      <circle cx="12" cy="4.5" r="2"/>
+      <path d="M12 7.5c-3.5 0-6.5 1.5-6.5 1.5l1 2.5s2.2-1 5.5-1 5.5 1 5.5 1l1-2.5S15.5 7.5 12 7.5z"/>
+      <path d="M10.5 12.5l-2 7h2.5l1-3.5 1 3.5H15.5l-2-7"/>
+    </svg>
+  </button>
+</div>`;
 
   const FOOTER_HTML = `
 <footer class="footer-minimal">
@@ -159,6 +321,12 @@
     } else {
       document.body.insertAdjacentHTML("beforeend", finalFooter);
     }
+  }
+
+  function injectA11yWidget() {
+    // Don't inject if it already exists
+    if (document.getElementById('a11yWidget')) return;
+    document.body.insertAdjacentHTML('beforeend', A11Y_HTML);
   }
 
   function markActiveLink() {
@@ -353,12 +521,267 @@
     });
   }
 
+  // ── LANGUAGE SELECTOR ──────────────────────────────────────────
+  function initLangSelector() {
+    const selector = document.getElementById('langSelector');
+    const toggle = document.getElementById('langToggle');
+    const dropdown = document.getElementById('langDropdown');
+    const current = document.getElementById('langCurrent');
+    if (!selector || !toggle || !dropdown) return;
+
+    // Restore saved language preference
+    const savedLang = localStorage.getItem('fgclm-lang') || 'es';
+    current.textContent = savedLang.toUpperCase();
+    dropdown.querySelectorAll('.lang-option').forEach(function(opt) {
+      opt.classList.toggle('active', opt.dataset.lang === savedLang);
+    });
+
+    function openDropdown() {
+      selector.classList.add('lang-open');
+      toggle.setAttribute('aria-expanded', 'true');
+    }
+    function closeDropdown() {
+      selector.classList.remove('lang-open');
+      toggle.setAttribute('aria-expanded', 'false');
+    }
+
+    toggle.addEventListener('click', function(e) {
+      e.stopPropagation();
+      selector.classList.contains('lang-open') ? closeDropdown() : openDropdown();
+    });
+
+    // Keyboard support
+    toggle.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        selector.classList.contains('lang-open') ? closeDropdown() : openDropdown();
+      }
+      if (e.key === 'Escape') closeDropdown();
+    });
+
+    dropdown.querySelectorAll('.lang-option').forEach(function(opt) {
+      opt.addEventListener('click', function(e) {
+        e.stopPropagation();
+        const lang = opt.dataset.lang;
+        current.textContent = lang.toUpperCase();
+        localStorage.setItem('fgclm-lang', lang);
+        dropdown.querySelectorAll('.lang-option').forEach(function(o) {
+          o.classList.toggle('active', o === opt);
+        });
+        closeDropdown();
+      });
+      opt.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          opt.click();
+        }
+        if (e.key === 'Escape') { closeDropdown(); toggle.focus(); }
+      });
+    });
+
+    // Close when clicking outside
+    document.addEventListener('click', function(e) {
+      if (!e.target.closest('#langSelector')) closeDropdown();
+    });
+  }
+
+  // ── ACCESSIBILITY WIDGET (EXPANDED PANEL) ──────────────────────
+  function initA11yWidget() {
+    var fab = document.getElementById('a11yToggle');
+    var panel = document.getElementById('a11yPanel');
+    var widget = document.getElementById('a11yWidget');
+    var overlay = document.getElementById('a11yOverlay');
+    var closeBtn = document.getElementById('a11yClose');
+    if (!fab || !panel) return;
+
+    var isOpen = false;
+
+    // ── SVG filter for color blindness (injected once into body) ──
+    if (!document.getElementById('a11yCBFilters')) {
+      var svgNS = 'http://www.w3.org/2000/svg';
+      var svgEl = document.createElementNS(svgNS, 'svg');
+      svgEl.setAttribute('id', 'a11yCBFilters');
+      svgEl.setAttribute('style', 'position:absolute;width:0;height:0;overflow:hidden;');
+      svgEl.setAttribute('aria-hidden', 'true');
+      svgEl.innerHTML = '<defs>' +
+        '<filter id="a11y-protanopia"><feColorMatrix type="matrix" values="0.567,0.433,0,0,0 0.558,0.442,0,0,0 0,0.242,0.758,0,0 0,0,0,1,0"/></filter>' +
+        '<filter id="a11y-deuteranopia"><feColorMatrix type="matrix" values="0.625,0.375,0,0,0 0.7,0.3,0,0,0 0,0.3,0.7,0,0 0,0,0,1,0"/></filter>' +
+        '<filter id="a11y-tritanopia"><feColorMatrix type="matrix" values="0.95,0.05,0,0,0 0,0.433,0.567,0,0 0,0.475,0.525,0,0 0,0,0,1,0"/></filter>' +
+        '<filter id="a11y-grayscale"><feColorMatrix type="saturate" values="0"/></filter>' +
+        '</defs>';
+      document.body.appendChild(svgEl);
+    }
+
+    // ── Load OpenDyslexic font ──
+    if (!document.getElementById('a11yDyslexicFont')) {
+      var link = document.createElement('link');
+      link.id = 'a11yDyslexicFont';
+      link.rel = 'stylesheet';
+      link.href = 'https://fonts.cdnfonts.com/css/opendyslexic';
+      document.head.appendChild(link);
+    }
+
+    // ── State management ──
+    var state = {
+      darkMode: localStorage.getItem('a11y-darkMode') === 'true',
+      textSize: localStorage.getItem('a11y-textSize') === 'true',
+      dyslexia: localStorage.getItem('a11y-dyslexia') === 'true',
+      underline: localStorage.getItem('a11y-underline') === 'true',
+      colorFilter: localStorage.getItem('a11y-colorFilter') || 'none'
+    };
+
+    function applyState() {
+      // Dark mode
+      document.body.classList.toggle('a11y-dark-mode', state.darkMode);
+      var lightBtn = document.getElementById('a11yModeLight');
+      var darkBtn = document.getElementById('a11yModeDark');
+      if (lightBtn && darkBtn) {
+        lightBtn.classList.toggle('active', !state.darkMode);
+        lightBtn.setAttribute('aria-checked', !state.darkMode);
+        darkBtn.classList.toggle('active', state.darkMode);
+        darkBtn.setAttribute('aria-checked', state.darkMode);
+      }
+
+      // Text size
+      document.documentElement.style.fontSize = state.textSize ? '120%' : '';
+      var tsEl = document.getElementById('a11yTextSize');
+      if (tsEl) {
+        tsEl.classList.toggle('active', state.textSize);
+        tsEl.setAttribute('aria-checked', state.textSize);
+      }
+
+      // Dyslexia font
+      document.body.classList.toggle('a11y-dyslexic-font', state.dyslexia);
+      var dyEl = document.getElementById('a11yDyslexia');
+      if (dyEl) {
+        dyEl.classList.toggle('active', state.dyslexia);
+        dyEl.setAttribute('aria-checked', state.dyslexia);
+      }
+
+      // Underline links
+      document.body.classList.toggle('a11y-underline-links', state.underline);
+      var ulEl = document.getElementById('a11yUnderline');
+      if (ulEl) {
+        ulEl.classList.toggle('active', state.underline);
+        ulEl.setAttribute('aria-checked', state.underline);
+      }
+
+      // Color blindness filter
+      var filterClasses = ['a11y-filter-protanopia', 'a11y-filter-deuteranopia', 'a11y-filter-tritanopia', 'a11y-filter-grayscale'];
+      filterClasses.forEach(function(c) { document.documentElement.classList.remove(c); });
+      if (state.colorFilter !== 'none') {
+        document.documentElement.classList.add('a11y-filter-' + state.colorFilter);
+      }
+      // Update CB buttons
+      document.querySelectorAll('.a11y-cb-btn').forEach(function(btn) {
+        btn.classList.toggle('active', btn.dataset.filter === state.colorFilter);
+      });
+    }
+
+    function saveState() {
+      localStorage.setItem('a11y-darkMode', state.darkMode);
+      localStorage.setItem('a11y-textSize', state.textSize);
+      localStorage.setItem('a11y-dyslexia', state.dyslexia);
+      localStorage.setItem('a11y-underline', state.underline);
+      localStorage.setItem('a11y-colorFilter', state.colorFilter);
+    }
+
+    // Apply on load
+    applyState();
+
+    // ── Panel open/close ──
+    function openPanel() {
+      isOpen = true;
+      widget.classList.add('a11y-open');
+      fab.setAttribute('aria-expanded', 'true');
+      fab.setAttribute('aria-label', 'Cerrar opciones de accesibilidad');
+      document.body.style.overflow = 'hidden';
+      // Focus the close button for keyboard users
+      setTimeout(function() { closeBtn && closeBtn.focus(); }, 200);
+    }
+    function closePanel() {
+      isOpen = false;
+      widget.classList.remove('a11y-open');
+      fab.setAttribute('aria-expanded', 'false');
+      fab.setAttribute('aria-label', 'Abrir opciones de accesibilidad');
+      document.body.style.overflow = '';
+      fab.focus();
+    }
+
+    fab.addEventListener('click', function() { isOpen ? closePanel() : openPanel(); });
+    fab.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); isOpen ? closePanel() : openPanel(); }
+    });
+    if (closeBtn) closeBtn.addEventListener('click', closePanel);
+    if (overlay) overlay.addEventListener('click', closePanel);
+
+    // Escape key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && isOpen) closePanel();
+    });
+
+    // ── Dark / Light mode ──
+    var lightBtn = document.getElementById('a11yModeLight');
+    var darkBtn = document.getElementById('a11yModeDark');
+    if (lightBtn) lightBtn.addEventListener('click', function() {
+      state.darkMode = false; saveState(); applyState();
+    });
+    if (darkBtn) darkBtn.addEventListener('click', function() {
+      state.darkMode = true; saveState(); applyState();
+    });
+
+    // ── Switch options ──
+    document.getElementById('a11yTextSize').addEventListener('click', function() {
+      state.textSize = !state.textSize; saveState(); applyState();
+    });
+    document.getElementById('a11yDyslexia').addEventListener('click', function() {
+      state.dyslexia = !state.dyslexia; saveState(); applyState();
+    });
+    document.getElementById('a11yUnderline').addEventListener('click', function() {
+      state.underline = !state.underline; saveState(); applyState();
+    });
+
+    // ── Color blindness accordion ──
+    var cbToggle = document.getElementById('a11yColorBlindToggle');
+    var cbContent = document.getElementById('a11yColorBlindContent');
+    if (cbToggle && cbContent) {
+      cbToggle.addEventListener('click', function() {
+        var expanded = cbToggle.getAttribute('aria-expanded') === 'true';
+        cbToggle.setAttribute('aria-expanded', !expanded);
+        cbContent.hidden = expanded;
+        cbToggle.closest('.a11y-accordion').classList.toggle('open', !expanded);
+      });
+    }
+
+    // ── Color blindness buttons ──
+    document.querySelectorAll('.a11y-cb-btn').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var filter = btn.dataset.filter;
+        state.colorFilter = (state.colorFilter === filter) ? 'none' : filter;
+        saveState(); applyState();
+      });
+    });
+
+    // ── Reset ──
+    document.getElementById('a11yReset').addEventListener('click', function() {
+      state.darkMode = false;
+      state.textSize = false;
+      state.dyslexia = false;
+      state.underline = false;
+      state.colorFilter = 'none';
+      saveState(); applyState();
+    });
+  }
+
   function init() {
     injectNav();
     injectFooter();
+    injectA11yWidget();
     markActiveLink();
     initHamburger();
     initNavScroll();
+    initLangSelector();
+    initA11yWidget();
     // Scroll reveal se lanza después de que el DOM esté completo
     // (pequeño timeout para que otros scripts como noticias_index.js puedan insertar tarjetas)
     setTimeout(initScrollReveal, 80);
