@@ -3012,10 +3012,25 @@ body.a11y-dark-mode .carta-box,
 body.a11y-dark-mode .contact-card,
 body.a11y-dark-mode .contact-form,
 body.a11y-dark-mode .circulares-box,
-body.a11y-dark-mode .handicap-box {
+body.a11y-dark-mode .handicap-box,
+body.a11y-dark-mode .mes-bloque,
+body.a11y-dark-mode .mes-resaltado,
+body.a11y-dark-mode .filtros-container,
+body.a11y-dark-mode .resultados-anteriores {
   background: var(--color-surface) !important;
   border-color: var(--color-border) !important;
   color: var(--color-text) !important;
+}
+
+body.a11y-dark-mode .torneo-item:hover,
+body.a11y-dark-mode .tabla-resultados tr:hover,
+body.a11y-dark-mode .circ-item:hover,
+body.a11y-dark-mode .autocomplete-item:hover,
+body.a11y-dark-mode .mapa-lista-item:hover,
+body.a11y-dark-mode .stat-provincia:hover,
+body.a11y-dark-mode .cookies-table tr:hover td,
+body.a11y-dark-mode .ranking-table tr:hover td {
+  background-color: var(--green-mid) !important;
 }
 
 /* Text colors for descriptions and content in dark mode */
@@ -3056,7 +3071,11 @@ body.a11y-dark-mode .precio-incluye li,
 body.a11y-dark-mode .form-card-desc,
 body.a11y-dark-mode .profesor-bio,
 body.a11y-dark-mode .historic-year a,
-body.a11y-dark-mode .historic-year span {
+body.a11y-dark-mode .historic-year span,
+body.a11y-dark-mode .sidebar-info-value,
+body.a11y-dark-mode .filtros-container select,
+body.a11y-dark-mode .nombre-torneo,
+body.a11y-dark-mode .lugar {
   color: var(--color-text) !important;
 }
 
@@ -3084,7 +3103,34 @@ body.a11y-dark-mode .precio-valor,
 body.a11y-dark-mode .form-card-title,
 body.a11y-dark-mode .profesor-nombre,
 body.a11y-dark-mode .section-title,
-body.a11y-dark-mode .ranking-card h3 {
+body.a11y-dark-mode .ranking-card h3,
+body.a11y-dark-mode .section-block h3,
+body.a11y-dark-mode .content-card h2,
+body.a11y-dark-mode .province h4,
+body.a11y-dark-mode .result-item h4,
+body.a11y-dark-mode .prueba-fecha,
+body.a11y-dark-mode .pts-cell,
+body.a11y-dark-mode .tab-btn.active,
+body.a11y-dark-mode .circ-titulo,
+body.a11y-dark-mode .mapa-lista-nombre,
+body.a11y-dark-mode .stat-prov-num,
+body.a11y-dark-mode .club-name,
+body.a11y-dark-mode .mapa-embed-texto strong,
+body.a11y-dark-mode .red-card-handle,
+body.a11y-dark-mode .browser-nombre,
+body.a11y-dark-mode .noticia-wp-content strong,
+body.a11y-dark-mode .noticia-wp-content b,
+body.a11y-dark-mode .relacionadas-titulo,
+body.a11y-dark-mode .noticia-nav-titulo,
+body.a11y-dark-mode .autocomplete-item strong,
+body.a11y-dark-mode .tratamiento-titulo,
+body.a11y-dark-mode .derecho-titulo,
+body.a11y-dark-mode .subv-titulo,
+body.a11y-dark-mode .doc-nombre,
+body.a11y-dark-mode .block-title,
+body.a11y-dark-mode .mes-title,
+body.a11y-dark-mode .filtros-container label,
+body.a11y-dark-mode .fecha {
   color: var(--gold) !important;
 }
 
