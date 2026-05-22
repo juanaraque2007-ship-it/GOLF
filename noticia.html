@@ -237,6 +237,136 @@
       .noticia-hero-content { padding: 30px 1.25rem 26px; } 
       .noticia-body-wrap { padding: 24px 1.25rem; gap: 32px; } 
     }
+
+    /* ══ DARK MODE — noticia.html ══ */
+    body.a11y-dark-mode .noticia-body-wrap {
+      background: var(--color-background) !important;
+    }
+
+    body.a11y-dark-mode .noticia-wp-content {
+      color: var(--color-text) !important;
+    }
+    body.a11y-dark-mode .noticia-wp-content p {
+      color: var(--color-text) !important;
+    }
+    body.a11y-dark-mode .noticia-wp-content > p:first-of-type {
+      color: var(--gold-light) !important;
+    }
+    body.a11y-dark-mode .noticia-wp-content strong,
+    body.a11y-dark-mode .noticia-wp-content b {
+      color: var(--gold) !important;
+    }
+    body.a11y-dark-mode .noticia-wp-content h2 {
+      color: var(--gold) !important;
+      border-bottom-color: var(--color-border) !important;
+    }
+    body.a11y-dark-mode .noticia-wp-content h3 {
+      color: var(--gold-light) !important;
+    }
+    body.a11y-dark-mode .noticia-wp-content blockquote {
+      background: rgba(201,168,76,0.08) !important;
+      border-left-color: var(--gold) !important;
+      color: var(--color-text) !important;
+    }
+    body.a11y-dark-mode .noticia-wp-content a {
+      color: var(--gold-light) !important;
+    }
+    body.a11y-dark-mode .noticia-wp-content td,
+    body.a11y-dark-mode .noticia-wp-content th {
+      border-color: var(--color-border) !important;
+    }
+    body.a11y-dark-mode .noticia-wp-content th {
+      background: var(--color-surface) !important;
+      color: var(--gold) !important;
+    }
+    body.a11y-dark-mode .noticia-wp-content tr:nth-child(even) td {
+      background: var(--color-surface) !important;
+    }
+
+    body.a11y-dark-mode .noticia-excerpt-pull {
+      color: var(--color-text) !important;
+      border-left-color: var(--gold) !important;
+    }
+
+    body.a11y-dark-mode .noticia-footer-note {
+      background: var(--color-surface) !important;
+      color: var(--color-text) !important;
+    }
+
+    body.a11y-dark-mode .noticia-img-caption {
+      background: var(--color-surface) !important;
+      border-top-color: var(--color-border) !important;
+      color: var(--color-text-secondary) !important;
+    }
+
+    body.a11y-dark-mode .noticia-img-wrap {
+      box-shadow: 0 6px 28px rgba(0,0,0,0.3) !important;
+    }
+
+    /* Sidebar dark mode */
+    body.a11y-dark-mode .sidebar-card {
+      background: var(--color-surface) !important;
+      border-color: var(--color-border) !important;
+    }
+    body.a11y-dark-mode .sidebar-card-title {
+      background: var(--color-background) !important;
+      color: var(--gold) !important;
+    }
+    body.a11y-dark-mode .sidebar-card-body {
+      background: var(--color-surface) !important;
+    }
+    body.a11y-dark-mode .sidebar-info-label {
+      color: var(--color-text-secondary) !important;
+    }
+    body.a11y-dark-mode .sidebar-info-value {
+      color: var(--color-text) !important;
+    }
+
+    body.a11y-dark-mode .patroc-main-s {
+      background: var(--color-background) !important;
+      border-color: var(--color-border) !important;
+    }
+    body.a11y-dark-mode .patroc-main-s-label {
+      color: var(--gold) !important;
+    }
+    body.a11y-dark-mode .patroc-main-s-name {
+      color: var(--color-text-secondary) !important;
+    }
+    body.a11y-dark-mode .patroc-item-s {
+      background: var(--color-background) !important;
+      border-color: var(--color-border) !important;
+    }
+    body.a11y-dark-mode .patroc-colab-s {
+      border-bottom-color: var(--color-border) !important;
+    }
+    body.a11y-dark-mode .patroc-colab-s-name {
+      color: var(--color-text) !important;
+    }
+    body.a11y-dark-mode .patroc-grid-s .patroc-item-s span {
+      color: var(--color-text) !important;
+    }
+
+    body.a11y-dark-mode .relacionadas-item {
+      border-bottom-color: var(--color-border) !important;
+    }
+    body.a11y-dark-mode .relacionadas-titulo {
+      color: var(--gold) !important;
+    }
+    body.a11y-dark-mode .relacionadas-fecha {
+      color: var(--color-text-secondary) !important;
+    }
+    body.a11y-dark-mode .relacionadas-item:hover .relacionadas-titulo {
+      color: var(--gold-light) !important;
+    }
+
+    body.a11y-dark-mode .noticia-loading,
+    body.a11y-dark-mode .noticia-error {
+      color: var(--color-text) !important;
+    }
+    body.a11y-dark-mode .noticia-loading-spinner {
+      border-color: var(--color-border) !important;
+      border-top-color: var(--gold) !important;
+    }
   </style>
 </head>
 <body>
@@ -254,11 +384,11 @@
   'use strict';
 
   var PATROS = [
-    { nombre:'Junta de Castilla-La Mancha', img:'img/logo_castilla_la_mancha.png', tipo:'principal' },
-    { nombre:'Automaor Renault', img:'https://www.fedgolfclm.com/wp-content/uploads/2025/04/Automaor-RENAULT-Golf-CLM-banners-05-1.jpg', tipo:'grid' },
-    { nombre:'Joma Sport', img:'http://www.fedgolfclm.com/wp-content/uploads/2021/09/joma-1.jpg', tipo:'grid' },
-    { nombre:'RFEG', img:'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/Real_Federaci%C3%B3n_Espa%C3%B1ola_de_Golf_logo.svg/200px-Real_Federaci%C3%B3n_Espa%C3%B1ola_de_Golf_logo.svg.png', tipo:'grid' },
-    { nombre:'Golf Estudio', img:'http://www.fedgolfclm.com/wp-content/uploads/2021/09/Golf-Estudio-1.jpg', tipo:'grid' }
+    { nombre:'Junta de Castilla-La Mancha', img:'img/logo_castilla_la_mancha.png', tipo:'principal', url:'https://www.castillalamancha.es/' },
+    { nombre:'Automaor Renault', img:'https://www.fedgolfclm.com/wp-content/uploads/2025/04/Automaor-RENAULT-Golf-CLM-banners-05-1.jpg', tipo:'grid', url:'https://automaor.com.es/' },
+    { nombre:'Joma Sport', img:'http://www.fedgolfclm.com/wp-content/uploads/2021/09/joma-1.jpg', tipo:'grid', url:'https://www.joma-sport.com/' },
+    { nombre:'RFEG', img:'http://www.rfegolf.es/ArtículosInformación/rfabordo/images/logo_rfeg.png', tipo:'grid', url:'http://www.rfegolf.es/' },
+    { nombre:'Golf Estudio', img:'http://www.fedgolfclm.com/wp-content/uploads/2021/09/Golf-Estudio-1.jpg', tipo:'grid', url:'http://www.fedgolfclm.com/acuerdo-suscrito-por-la-federacion-de-golf-de-castilla-la-mancha-con-golf-estudio/' }
   ];
 
   var CAT_GRADIENT = {
@@ -348,22 +478,22 @@
       // Nav Mobile
       // Patrocinadores
       +'<div class="sidebar-card sidebar-patroc-card"><div class="sidebar-card-title">Patrocinadores</div><div class="sidebar-card-body">'
-        +'<div class="patroc-main-s"><div class="patroc-main-s-label">Patrocinador oficial</div>'
-          +'<img src="'+esc(principal.img)+'" alt="'+esc(principal.nombre)+'" onerror="this.outerHTML=\'<span style=\\\"font-size:11px;font-weight:700;color:var(--green-dark)\\\">Junta CLM</span>\'">'
+        +'<a href="'+esc(principal.url)+'" target="_blank" rel="noopener" class="patroc-main-s" style="text-decoration:none;"><div class="patroc-main-s-label">Patrocinador oficial</div>'
+          +'<img src="'+esc(principal.img)+'" alt="'+esc(principal.nombre)+'" onerror="this.outerHTML=\'<span style=\\\'font-size:11px;font-weight:700;color:var(--green-dark)\\\'>Junta CLM</span>\'">'
           +'<div class="patroc-main-s-name">'+esc(principal.nombre)+'</div>'
-        +'</div>'
+        +'</a>'
         + colabs.map(function(c){
-            return '<div class="patroc-colab-s">'
+            return '<a href="'+esc(c.url||'#')+'" target="_blank" rel="noopener" class="patroc-colab-s" style="text-decoration:none;">'
               +'<img src="'+esc(c.img)+'" alt="'+esc(c.nombre)+'" onerror="this.style.display=\'none\'">'
               +'<span class="patroc-colab-s-name">'+esc(c.nombre)+'</span>'
-              +'</div>';
+              +'</a>';
           }).join('')
         +'<div style="height:10px"></div>'
         +'<div class="patroc-grid-s">'
           + grid.map(function(g){
-              return '<div class="patroc-item-s">'
-                +'<img src="'+esc(g.img)+'" alt="'+esc(g.nombre)+'" onerror="this.outerHTML=\'<span style=\\\"font-size:9px;font-weight:700;color:var(--gray-600)\\\">'+esc(g.nombre)+'</span>\'">'
-                +'</div>';
+              return '<a href="'+esc(g.url||'#')+'" target="_blank" rel="noopener" class="patroc-item-s" style="text-decoration:none;">'
+                +'<img src="'+esc(g.img)+'" alt="'+esc(g.nombre)+'" onerror="this.outerHTML=\'<span style=\\\'font-size:9px;font-weight:700;color:var(--gray-600)\\\'>'+esc(g.nombre)+'</span>\'">'
+                +'</a>';
             }).join('')
         +'</div>'
       +'</div></div>';
