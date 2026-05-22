@@ -184,17 +184,7 @@
           <span class="a11y-switch" aria-hidden="true"><span class="a11y-switch-knob"></span></span>
         </button>
 
-        <!-- Underline Links -->
-        <button class="a11y-option" id="a11yUnderline" role="switch" aria-checked="false">
-          <span class="a11y-option-icon">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3v7a6 6 0 0 0 12 0V3"/><line x1="4" y1="21" x2="20" y2="21"/></svg>
-          </span>
-          <span class="a11y-option-text">
-            <span class="a11y-option-title">Subrayar Enlaces</span>
-            <span class="a11y-option-desc">Subraya todos los enlaces para identificarlos</span>
-          </span>
-          <span class="a11y-switch" aria-hidden="true"><span class="a11y-switch-knob"></span></span>
-        </button>
+
       </div>
 
       <!-- Section 3: Color Blindness -->
@@ -689,7 +679,6 @@
       darkMode: localStorage.getItem('a11y-darkMode') === 'true',
       textSize: localStorage.getItem('a11y-textSize') === 'true',
       dyslexia: localStorage.getItem('a11y-dyslexia') === 'true',
-      underline: localStorage.getItem('a11y-underline') === 'true',
       colorFilter: localStorage.getItem('a11y-colorFilter') || 'none'
     };
 
@@ -721,13 +710,7 @@
         dyEl.setAttribute('aria-checked', state.dyslexia);
       }
 
-      // Underline links
-      document.body.classList.toggle('a11y-underline-links', state.underline);
-      var ulEl = document.getElementById('a11yUnderline');
-      if (ulEl) {
-        ulEl.classList.toggle('active', state.underline);
-        ulEl.setAttribute('aria-checked', state.underline);
-      }
+
 
       // Color blindness filter
       var filterClasses = ['a11y-filter-protanopia', 'a11y-filter-deuteranopia', 'a11y-filter-tritanopia', 'a11y-filter-grayscale'];
@@ -745,7 +728,6 @@
       localStorage.setItem('a11y-darkMode', state.darkMode);
       localStorage.setItem('a11y-textSize', state.textSize);
       localStorage.setItem('a11y-dyslexia', state.dyslexia);
-      localStorage.setItem('a11y-underline', state.underline);
       localStorage.setItem('a11y-colorFilter', state.colorFilter);
     }
 
@@ -800,9 +782,7 @@
     document.getElementById('a11yDyslexia').addEventListener('click', function() {
       state.dyslexia = !state.dyslexia; saveState(); applyState();
     });
-    document.getElementById('a11yUnderline').addEventListener('click', function() {
-      state.underline = !state.underline; saveState(); applyState();
-    });
+
 
     // ── Color blindness accordion ──
     var cbToggle = document.getElementById('a11yColorBlindToggle');
@@ -830,7 +810,6 @@
       state.darkMode = false;
       state.textSize = false;
       state.dyslexia = false;
-      state.underline = false;
       state.colorFilter = 'none';
       saveState(); applyState();
     });
