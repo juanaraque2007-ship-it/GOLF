@@ -2351,7 +2351,6 @@ h2.section-title {
 /* ── Language selector responsive ── */
 @media (max-width: 1100px) {
   .lang-selector {
-    order: -1;
   }
   .lang-toggle {
     padding: 4px 8px;
