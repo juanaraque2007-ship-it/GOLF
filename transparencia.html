@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
@@ -20,16 +20,22 @@
       border-bottom: 2px solid var(--gold);
     }
     .intro-text { font-size: 15px; color: var(--gray-600); line-height: 1.8; max-width: 720px; margin-bottom: 48px; }
-    .doc-list { margin-bottom: 48px; display: flex; flex-direction: column; }
+    .doc-list {
+      margin-bottom: 48px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
     .doc-item {
       display: flex;
       align-items: center;
-      gap: 18px;
-      padding: 18px 0;
-      border-bottom: 1px solid var(--gray-100);
-      transition: background 0.15s;
+      gap: 20px;
+      padding: 22px 32px;
+      background: var(--gray-50);
+      border: 1px solid var(--gray-100);
+      border-radius: 10px;
+      transition: all 0.2s ease;
     }
-    .doc-item:first-child { border-top: 1px solid var(--gray-100); }
     .doc-icon { font-size: 24px; flex-shrink: 0; }
     .doc-info { flex: 1; }
     .doc-nombre { font-weight: 600; color: var(--green-dark); font-size: 14px; }
@@ -47,7 +53,20 @@
       color: inherit;
     }
     a.doc-item:hover {
-      background: var(--gray-50);
+      background: var(--gray-100);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+    
+    /* Adaptaciones para Modo Oscuro */
+    body.a11y-dark-mode .doc-item:hover {
+      background: var(--green-mid) !important;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    }
+    body.a11y-dark-mode .doc-anyo {
+      background: rgba(201, 168, 76, 0.15) !important;
+      color: var(--gold-light) !important;
     }
     .info-box {
       background: var(--gray-50);
