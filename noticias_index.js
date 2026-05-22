@@ -21,10 +21,17 @@
     'default':              'linear-gradient(135deg,#0a3d2e,#1a6645)'
   };
   const CAT_EMOJI = {
-    'Masculino':'🏌️','Femenino':'⛳','Masculino y Femenino':'🏆',
-    'Senior':'🎖️','Juvenil':'👶','Profesional':'🏅',
-    'Pitch & Putt':'🏌️','Federativas':'📋','Golf Adaptado':'♿',
-    'Reglas y Campos':'📖','default':'⛳'
+    'Masculino': '<svg class="cat-svg" viewBox="0 0 24 24"><circle cx="12" cy="8" r="5"></circle><path d="M12 13v7M9 21h6"></path></svg>',
+    'Femenino': '<svg class="cat-svg" viewBox="0 0 24 24"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path><line x1="4" y1="22" x2="4" y2="15"></line></svg>',
+    'Masculino y Femenino': '<svg class="cat-svg" viewBox="0 0 24 24"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"></path><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"></path><path d="M4 22h16"></path><path d="M10 14.66V17c0 .55-.45 1-1 1H4v2h16v-2h-5c-.55 0-1-.45-1-1v-2.34"></path><path d="M12 2a6 6 0 0 0-6 6v5a6 6 0 0 0 12 0V8a6 6 0 0 0-6-6z"></path></svg>',
+    'Senior': '<svg class="cat-svg" viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"></circle><path d="M15.47 14L19 22l-7-3-7 3 3.53-8"></path></svg>',
+    'Juvenil': '<svg class="cat-svg" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>',
+    'Profesional': '<svg class="cat-svg" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>',
+    'Pitch & Putt': '<svg class="cat-svg" viewBox="0 0 24 24"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path><line x1="4" y1="22" x2="4" y2="15"></line></svg>',
+    'Federativas': '<svg class="cat-svg" viewBox="0 0 24 24"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"></path><rect x="8" y="2" width="8" height="4" rx="1" ry="1"></rect></svg>',
+    'Golf Adaptado': '<svg class="cat-svg" viewBox="0 0 24 24"><circle cx="8" cy="18" r="4"></circle><path d="M11 15h3.5"></path><path d="M15 15l-1-7.5H9v-3"></path><circle cx="9" cy="2.5" r="1.5"></circle></svg>',
+    'Reglas y Campos': '<svg class="cat-svg" viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>',
+    'default': '<svg class="cat-svg" viewBox="0 0 24 24"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path><line x1="4" y1="22" x2="4" y2="15"></line></svg>'
   };
 
   function getBg(n) {

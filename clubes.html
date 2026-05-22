@@ -620,14 +620,14 @@
         +'<div class="club-id">'+c.id+'</div>'
         +'<h3 class="club-name">'+c.nombre+'</h3>'
         +'<div class="club-badges">'
-          +'<span class="club-hoyos">⛳ '+c.hoyos+' hoyos</span>'
+          +'<span class="club-hoyos"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block; vertical-align:middle; margin-right:4px;"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"></path><line x1="4" y1="22" x2="4" y2="15"></line></svg> '+c.hoyos+' hoyos</span>'
           +'<span class="club-tipo-badge '+tc+'">'+c.tipo+'</span>'
         +'</div>'
         +'<div class="club-detail"><strong>Dirección:</strong> '+c.direccion+'</div>'
         +(c.email ? '<div class="club-detail"><strong>Email:</strong> <a href="mailto:'+c.email+'" style="color:var(--green-accent);text-decoration:none;">'+c.email+'</a></div>' : '')
         +'<div class="club-actions">'
-          +(c.tel ? '<a href="tel:'+c.tel.replace(/\s/g,'')+'" class="club-btn club-btn-tel">📞 '+c.tel+'</a>' : '')
-          +(c.web ? '<a href="https://'+c.web+'" target="_blank" rel="noopener" class="club-btn club-btn-web">🌐 Web</a>' : '')
+          +(c.tel ? '<a href="tel:'+c.tel.replace(/\s/g,'')+'" class="club-btn club-btn-tel"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block; vertical-align:middle; margin-right:4px;"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg> '+c.tel+'</a>' : '')
+          +(c.web ? '<a href="https://'+c.web+'" target="_blank" rel="noopener" class="club-btn club-btn-web"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block; vertical-align:middle; margin-right:4px;"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg> Web</a>' : '')
         +'</div>'
         +'</div>';
     }).join('');
