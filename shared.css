@@ -3304,13 +3304,7 @@ body.a11y-dyslexic-font * {
 }
 
 
-/* ========================================================
-   UNDERLINE LINKS — Subrayar todos los enlaces
-   ======================================================== */
-body.a11y-underline-links a {
-  text-decoration: underline !important;
-  text-underline-offset: 3px;
-}
+
 
 
 /* ========================================================
