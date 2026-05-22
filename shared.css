@@ -3310,20 +3310,24 @@ body.a11y-underline-links a {
 /* ========================================================
    COLOR BLINDNESS FILTERS — Filtros de daltonismo
    ======================================================== */
-html.a11y-filter-protanopia {
+body > *:not(#a11yWidget).a11y-filter-active-protanopia,
+html.a11y-filter-protanopia body > *:not(#a11yWidget) {
   filter: url(#a11y-protanopia);
 }
 
-html.a11y-filter-deuteranopia {
+body > *:not(#a11yWidget).a11y-filter-active-deuteranopia,
+html.a11y-filter-deuteranopia body > *:not(#a11yWidget) {
   filter: url(#a11y-deuteranopia);
 }
 
-html.a11y-filter-tritanopia {
+body > *:not(#a11yWidget).a11y-filter-active-tritanopia,
+html.a11y-filter-tritanopia body > *:not(#a11yWidget) {
   filter: url(#a11y-tritanopia);
 }
 
-html.a11y-filter-grayscale {
-  filter: url(#a11y-grayscale);
+body > *:not(#a11yWidget).a11y-filter-active-grayscale,
+html.a11y-filter-grayscale body > *:not(#a11yWidget) {
+  filter: grayscale(1); /* Using native CSS for grayscale is more reliable */
 }
 
 /* ========================================================
