@@ -73,6 +73,22 @@
     }
     .examen-box p { font-size: 14px; color: var(--gray-600); line-height: 1.7; margin-bottom: 10px; }
     .examen-box p:last-child { margin-bottom: 0; }
+    
+    /* Modo oscuro para .examen-box */
+    body.a11y-dark-mode .examen-box {
+      background: var(--color-surface) !important;
+      border-color: var(--color-border) !important;
+      border-left-color: var(--green-accent) !important;
+    }
+    body.a11y-dark-mode .examen-box h3 {
+      color: var(--gold) !important;
+    }
+    body.a11y-dark-mode .examen-box p {
+      color: var(--color-text) !important;
+    }
+    body.a11y-dark-mode .examen-box strong {
+      color: var(--gold-light) !important;
+    }
     .back-link {
       display: inline-flex; align-items: center; gap: 8px;
       font-size: 13px; font-weight: 600; color: var(--green-accent);
