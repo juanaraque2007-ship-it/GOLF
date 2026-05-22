@@ -276,6 +276,7 @@
 <div class="listado-section">
   <div class="listado-header">
     <div class="result-count" id="resultCount">Cargando noticias…</div>
+    <div class="paginacion" id="paginacionTop" style="margin-top: 0;"></div>
   </div>
   <div class="loading-state" id="loadingState">
     <div class="skeleton-card"><div class="skeleton-img"></div><div class="skeleton-body"><div class="skeleton-line" style="height:11px;width:28%"></div><div class="skeleton-line" style="height:16px;width:82%"></div><div class="skeleton-line" style="height:11px;width:68%"></div><div class="skeleton-line" style="height:11px;width:55%"></div></div></div>
@@ -343,6 +344,7 @@
   const filtroAnyos = document.getElementById('filtroAnyos');
   const grid        = document.getElementById('noticiasGrid');
   const pagDiv      = document.getElementById('paginacion');
+  const pagDivTop   = document.getElementById('paginacionTop');
   const countEl     = document.getElementById('resultCount');
   const loadingEl   = document.getElementById('loadingState');
   const autocompleteDiv = document.getElementById('autocompleteResultados');
@@ -442,14 +444,20 @@
 
   function renderPagination() {
     const pages = Math.ceil(filtered.length / PER_PAGE);
-    if (pages <= 1) { pagDiv.innerHTML = ''; return; }
+    if (pages <= 1) { 
+      pagDiv.innerHTML = ''; 
+      if(pagDivTop) pagDivTop.innerHTML = ''; 
+      return; 
+    }
     let html = `<button class="pag-btn" onclick="goPage(${currentPage-1})" ${currentPage===1?'disabled':''}>‹ Anterior</button>`;
     const delta = 2, start = Math.max(1, currentPage-delta), end = Math.min(pages, currentPage+delta);
     if (start > 1) { html += `<button class="pag-btn" onclick="goPage(1)">1</button>`; if (start>2) html += `<span style="padding:0 4px;color:var(--gray-300)">…</span>`; }
     for (let i=start; i<=end; i++) html += `<button class="pag-btn ${i===currentPage?'active':''}" onclick="goPage(${i})">${i}</button>`;
     if (end < pages) { if (end<pages-1) html += `<span style="padding:0 4px;color:var(--gray-300)">…</span>`; html += `<button class="pag-btn" onclick="goPage(${pages})">${pages}</button>`; }
     html += `<button class="pag-btn" onclick="goPage(${currentPage+1})" ${currentPage===pages?'disabled':''}>Siguiente ›</button>`;
+    
     pagDiv.innerHTML = html;
+    if(pagDivTop) pagDivTop.innerHTML = html;
   }
 
   window.goPage = function(p) {
