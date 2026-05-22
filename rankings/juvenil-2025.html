@@ -6,15 +6,16 @@
   <title>Rankings Sub 18, Sub 16 y Juvenil CLM 2025 — Federación de Golf de Castilla-La Mancha</title>
   <link rel="icon" type="image/png" href="../img/favicon_pagina.png">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="../shared.css">
   <style>
-    :root{--green-dark:#1a3c2a;--green-accent:#2d6a4f;--gold:#c9a84c;--white:#fff;--gray-50:#f8f9fa;--gray-100:#e9ecef;--gray-300:#adb5bd;--gray-600:#6c757d;--gray-900:#212529;--font-display:'Playfair Display',serif;--font-body:'DM Sans',sans-serif}
-    *{margin:0;padding:0;box-sizing:border-box}body{font-family:var(--font-body);background:var(--gray-50);color:var(--gray-900)}
-    .back-bar{background:var(--green-dark);padding:14px 2rem;display:flex;align-items:center}
+    body { padding-top: 70px; background-color: var(--gray-50); }
+    .icon-svg-lg { display: inline-block; vertical-align: -4px; color: var(--gold); margin-right: 8px; }
+    .icon-svg-sm { display: inline-block; vertical-align: -2px; color: var(--gold); margin-right: 4px; }
     .back-bar a{color:var(--gold);text-decoration:none;font-size:14px;font-weight:600;letter-spacing:.5px;transition:color .2s}
     .back-bar a:hover{color:var(--white)}
-    .page-hero{background:linear-gradient(135deg,var(--green-dark) 0%,#2d6a4f 100%);padding:80px 2rem 60px;text-align:center;color:var(--white)}
     .page-hero .label{font-size:12px;text-transform:uppercase;letter-spacing:2px;color:var(--gold);margin-bottom:12px}
-    .page-hero h1{font-family:var(--font-display);font-size:2.6rem;font-weight:700;margin-bottom:12px}
+    
     .page-hero h1 em{color:var(--gold);font-style:normal}
     .page-hero p{font-size:1.1rem;opacity:.85;max-width:700px;margin:0 auto}
     .content-page{padding:48px 6rem;max-width:960px;margin:0 auto}
@@ -28,17 +29,18 @@
     .meta-box{display:flex;gap:24px;flex-wrap:wrap;margin-bottom:28px}
     .meta-tag{font-size:12px;text-transform:uppercase;letter-spacing:1px;color:var(--gray-300);padding:6px 14px;background:var(--gray-50);border-radius:20px;border:1px solid var(--gray-100)}
     @media(max-width:1100px){.content-page{padding:48px 2.5rem}}
-    @media(max-width:640px){.content-page{padding:32px 1.25rem}.content-card{padding:24px}.page-hero h1{font-size:1.8rem}}
+    @media(max-width:640px){.content-page{padding:32px 1.25rem}.content-card{padding:24px}}
   </style>
 </head>
 <body>
 
-<div class="back-bar"><a href="../rankings.html">← Volver a Rankings General</a></div>
 
 <div class="page-hero">
-  <div class="label">Ranking Juvenil</div>
+  <div class="page-hero-content" data-reveal>
+    <div class="page-hero-label">Ranking Juvenil</div>
   <h1>Rankings Sub 18, Sub 16 y Juvenil <em>2025</em></h1>
   <p>Actualización de los Rankings Juveniles de Castilla La Mancha</p>
+  </div>
 </div>
 
 <div class="content-page">
@@ -69,7 +71,7 @@
   </div>
 </div>
 
-<div class="back-bar"><a href="../rankings.html">← Volver a Rankings General</a></div>
 
+<script src="../shared.js"></script>
 </body>
 </html>
