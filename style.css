@@ -1576,21 +1576,22 @@ footer {
   .nav-links li a { line-height: 60px; }
 
   .hero { min-height: 100vh; min-height: 100dvh; }
-  .hero-top-bar { padding: 76px 1rem 0; }
-  .hero-content { padding: 1rem 1rem 1.5rem; }
+  .hero-top-bar { padding: 76px 1rem 0; justify-content: center; }
+  .hero-content { padding: 1rem; align-items: center; text-align: center; }
   .hero-title { font-size: 1.8rem; letter-spacing: -0.5px; }
-  .hero-sub { font-size: 13px; max-width: none; margin-bottom: 1rem; }
-  .hero-eyebrow { font-size: 10px; letter-spacing: 2px; }
+  .hero-sub { font-size: 13px; max-width: none; margin-bottom: 1.5rem; margin-left: auto; margin-right: auto; }
+  .hero-eyebrow { font-size: 10px; letter-spacing: 2px; justify-content: center; }
+  .hero-eyebrow::before { display: none; }
   .hero-tag { font-size: 9px; padding: 5px 12px; }
   .hero-stats {
-    margin: 0 1rem 1rem;
+    margin: 0 1rem 2.5rem; /* Move up by increasing bottom margin */
     gap: 0;
     border: 1px solid rgba(255,255,255,0.1);
   }
-  .hero-stat { padding: 10px 16px; flex: 1; min-width: 0; }
+  .hero-stat { padding: 10px 16px; flex: 1; min-width: 0; text-align: center; }
   .hero-stat-num { font-size: 1.4rem; }
   .hero-stat-label { font-size: 8px; letter-spacing: 1px; }
-  .hero-ctas { gap: 10px; }
+  .hero-ctas { gap: 10px; justify-content: center; }
   .hero-ctas .btn-primary { padding: 11px 22px; font-size: 12px; }
   .hero-ctas .btn-secondary { padding: 11px 22px; font-size: 12px; }
 
