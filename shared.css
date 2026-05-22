@@ -1713,6 +1713,7 @@ h2.section-title {
   .doc-item {
     flex-wrap: wrap;
     gap: 10px;
+    padding: 16px 20px !important;
   }
 
   .doc-icon svg {
