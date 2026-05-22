@@ -19,7 +19,14 @@
       padding-bottom: 12px;
       border-bottom: 2px solid var(--gold);
     }
-    .intro-text { font-size: 15px; color: var(--gray-600); line-height: 1.8; max-width: 720px; margin-bottom: 48px; }
+    .intro-container { max-width: 800px; margin: 0 auto 48px auto; }
+    .intro-text { font-size: 15px; color: var(--gray-600); line-height: 1.8; margin-bottom: 24px; }
+    .novedades-box {
+      border-left: 4px solid var(--gold);
+      background: var(--gray-50);
+      padding: 20px 24px;
+      border-radius: 4px;
+    }
     .pruebas-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -54,10 +61,38 @@
     }
     .estado-pasada { background: var(--gray-100); color: var(--gray-300); }
     .estado-proxima { background: var(--green-light); color: var(--green-mid); }
-    .ranking-table { width: 100%; border-collapse: collapse; margin-bottom: 48px; }
-    .ranking-table th { background: var(--green-dark); color: var(--white); padding: 12px 16px; text-align: left; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
-    .ranking-table td { padding: 12px 16px; border-bottom: 1px solid var(--gray-100); font-size: 13px; color: var(--gray-900); }
-    .ranking-table tr:hover td { background: var(--gray-50); }
+    
+    .campo-label {
+      font-weight: 700;
+      text-transform: uppercase;
+      font-size: 10px;
+      color: var(--green-dark);
+      letter-spacing: 1px;
+      margin-right: 4px;
+    }
+
+    body.a11y-dark-mode .novedades-box {
+      background: var(--color-surface) !important;
+    }
+    body.a11y-dark-mode .prueba-fecha,
+    body.a11y-dark-mode .prueba-nombre {
+      color: var(--color-text) !important;
+    }
+    body.a11y-dark-mode .prueba-mes,
+    body.a11y-dark-mode .prueba-campo {
+      color: var(--gray-300) !important;
+    }
+    body.a11y-dark-mode .campo-label {
+      color: var(--gold) !important;
+    }
+    body.a11y-dark-mode .estado-pasada {
+      background: rgba(255, 255, 255, 0.1) !important;
+      color: var(--gray-300) !important;
+    }
+    body.a11y-dark-mode .estado-proxima {
+      background: rgba(255, 255, 255, 0.1) !important;
+      color: var(--gold) !important;
+    }
     .pos-badge { display: inline-flex; align-items: center; justify-content: center; width: 30px; height: 30px; border-radius: 50%; font-weight: 700; font-size: 13px; }
     .pos-1 { background: #FFD700; color: #5a4500; }
     .pos-2 { background: #C0C0C0; color: #3a3a3a; }
@@ -82,9 +117,16 @@
 </div>
 
 <div class="circuito-section">
-  <p class="intro-text">
-    El Circuito de 5ª Categoría de la Federación de Golf de Castilla-La Mancha está diseñado para los jugadores con hándicap entre 27 y 36 (mujeres) y entre 19 y 26 (hombres). El circuito consta de 8 pruebas distribuidas por toda la región a lo largo de la temporada, con un ranking acumulado que culmina en la gran final anual.
-  </p>
+  <div class="intro-container">
+    <p class="intro-text">
+      El Circuito de 5ª Categoría de la Federación de Golf de Castilla-La Mancha está diseñado para los jugadores con hándicap entre 27 y 36 (mujeres) y entre 19 y 26 (hombres). El circuito consta de pruebas distribuidas por toda la región a lo largo de la temporada, culminando en una Gran Final Autonómica.
+    </p>
+
+    <div class="novedades-box info-box">
+      <p><strong>Novedades 2025:</strong> El Circuito Autonómico y Nacional de 5ª Categoría 2025 está dirigido a jugadores que se inician en el golf, con hándicap EGA entre 26,5 y 36,0 al momento de jugar su primera prueba. La modalidad de juego es individual stableford a 9 hoyos desde barras rojas.</p>
+      <p style="margin-bottom: 0;">La <strong>Final Autonómica</strong> tendrá lugar en Torrijos Golf el 15 de septiembre de 2025, clasificando los 10 primeros de cada categoría (masculina y femenina).</p>
+    </div>
+  </div>
 
   <div class="block-title">Pruebas del Circuito 2026</div>
   <div class="pruebas-grid">
@@ -93,7 +135,7 @@
       <div class="prueba-fecha">15</div>
       <div class="prueba-mes">Febrero 2026</div>
       <div class="prueba-nombre">I Prueba — Open de Invierno</div>
-      <div class="prueba-campo">📍 Palomarejos Golf, Toledo</div>
+      <div class="prueba-campo"><span class="campo-label">Sede:</span> Palomarejos Golf, Toledo</div>
       <span class="prueba-estado estado-pasada">Disputada</span>
     </div>
     <div class="prueba-card">
@@ -101,7 +143,7 @@
       <div class="prueba-fecha">22</div>
       <div class="prueba-mes">Marzo 2026</div>
       <div class="prueba-nombre">II Prueba — Trofeo Primavera</div>
-      <div class="prueba-campo">📍 Cabanillas Golf, Guadalajara</div>
+      <div class="prueba-campo"><span class="campo-label">Sede:</span> Cabanillas Golf, Guadalajara</div>
       <span class="prueba-estado estado-pasada">Disputada</span>
     </div>
     <div class="prueba-card">
@@ -109,7 +151,7 @@
       <div class="prueba-fecha">26</div>
       <div class="prueba-mes">Abril 2026</div>
       <div class="prueba-nombre">III Prueba — Trofeo Cuenca</div>
-      <div class="prueba-campo">📍 Golf Molino de Rus, Cuenca</div>
+      <div class="prueba-campo"><span class="campo-label">Sede:</span> Golf Molino de Rus, Cuenca</div>
       <span class="prueba-estado estado-pasada">Disputada</span>
     </div>
     <div class="prueba-card">
@@ -117,7 +159,7 @@
       <div class="prueba-fecha">31</div>
       <div class="prueba-mes">Mayo 2026</div>
       <div class="prueba-nombre">IV Prueba — Trofeo Ciudad Real</div>
-      <div class="prueba-campo">📍 Golf Ciudad Real, Ciudad Real</div>
+      <div class="prueba-campo"><span class="campo-label">Sede:</span> Golf Ciudad Real, Ciudad Real</div>
       <span class="prueba-estado estado-proxima">Próxima</span>
     </div>
     <div class="prueba-card">
@@ -125,7 +167,7 @@
       <div class="prueba-fecha">28</div>
       <div class="prueba-mes">Junio 2026</div>
       <div class="prueba-nombre">V Prueba — Trofeo Albacete</div>
-      <div class="prueba-campo">📍 Club de Golf Pinaíllas, Albacete</div>
+      <div class="prueba-campo"><span class="campo-label">Sede:</span> Club de Golf Pinaíllas, Albacete</div>
       <span class="prueba-estado estado-proxima">Próxima</span>
     </div>
     <div class="prueba-card">
@@ -133,7 +175,7 @@
       <div class="prueba-fecha">6</div>
       <div class="prueba-mes">Septiembre 2026</div>
       <div class="prueba-nombre">VI Prueba — Trofeo Otoño</div>
-      <div class="prueba-campo">📍 Montealvar Golf, Guadalajara</div>
+      <div class="prueba-campo"><span class="campo-label">Sede:</span> Montealvar Golf, Guadalajara</div>
       <span class="prueba-estado estado-proxima">Próxima</span>
     </div>
     <div class="prueba-card">
@@ -141,7 +183,7 @@
       <div class="prueba-fecha">11</div>
       <div class="prueba-mes">Octubre 2026</div>
       <div class="prueba-nombre">VII Prueba — Trofeo Toledo</div>
-      <div class="prueba-campo">📍 Club de Golf Layos, Toledo</div>
+      <div class="prueba-campo"><span class="campo-label">Sede:</span> Club de Golf Layos, Toledo</div>
       <span class="prueba-estado estado-proxima">Próxima</span>
     </div>
     <div class="prueba-card">
@@ -149,34 +191,39 @@
       <div class="prueba-fecha">15</div>
       <div class="prueba-mes">Noviembre 2026</div>
       <div class="prueba-nombre">Gran Final Circuito 5ª Categoría</div>
-      <div class="prueba-campo">📍 Por determinar</div>
+      <div class="prueba-campo"><span class="campo-label">Sede:</span> Por determinar</div>
       <span class="prueba-estado estado-proxima">Próxima</span>
     </div>
   </div>
 
-  <div class="block-title">Clasificación Provisional del Circuito 2026</div>
-  <table class="ranking-table">
-    <thead><tr><th>Pos.</th><th>Jugador/a</th><th>Club</th><th>P1</th><th>P2</th><th>P3</th><th>Total</th></tr></thead>
-    <tbody>
-      <tr><td><span class="pos-badge pos-1">1</span></td><td>Tomás Bermúdez Cano</td><td>Palomarejos Golf</td><td>100</td><td>90</td><td>95</td><td class="pts-cell">285</td></tr>
-      <tr><td><span class="pos-badge pos-2">2</span></td><td>Pilar Ramos Alcolea</td><td>Cabanillas Golf</td><td>85</td><td>100</td><td>80</td><td class="pts-cell">265</td></tr>
-      <tr><td><span class="pos-badge pos-3">3</span></td><td>Óscar Navarro Reyes</td><td>Golf Molino de Rus</td><td>90</td><td>80</td><td>90</td><td class="pts-cell">260</td></tr>
-      <tr><td><span class="pos-badge pos-n">4</span></td><td>Encarna Soto Jiménez</td><td>Club de Golf Pinaíllas</td><td>80</td><td>85</td><td>85</td><td class="pts-cell">250</td></tr>
-      <tr><td><span class="pos-badge pos-n">5</span></td><td>Jesús Alarcón Morales</td><td>Golf Ciudad Real</td><td>75</td><td>70</td><td>100</td><td class="pts-cell">245</td></tr>
-      <tr><td><span class="pos-badge pos-n">6</span></td><td>María Dolores Castellano</td><td>Montealvar Golf</td><td>70</td><td>95</td><td>75</td><td class="pts-cell">240</td></tr>
-      <tr><td><span class="pos-badge pos-n">7</span></td><td>Benito Rueda Escribano</td><td>Club de Golf Layos</td><td>95</td><td>75</td><td>60</td><td class="pts-cell">230</td></tr>
-      <tr><td><span class="pos-badge pos-n">8</span></td><td>Soledad García Merino</td><td>Palomarejos Golf</td><td>60</td><td>65</td><td>95</td><td class="pts-cell">220</td></tr>
-      <tr><td><span class="pos-badge pos-n">9</span></td><td>Augusto Prieto Valverde</td><td>Cabanillas Golf</td><td>65</td><td>60</td><td>70</td><td class="pts-cell">195</td></tr>
-      <tr><td><span class="pos-badge pos-n">10</span></td><td>Natalia Campos Blanco</td><td>Golf Cifuentes</td><td>50</td><td>55</td><td>80</td><td class="pts-cell">185</td></tr>
-    </tbody>
-  </table>
-
   <div class="block-title">Información del Circuito</div>
   <div class="info-box">
-    <p><strong>¿Quién puede participar?</strong> El circuito está abierto a todos los jugadores federados de la FGCLM con hándicap WHS comprendido entre 19.0 y 36.0 (hombres) y entre 27.0 y 54.0 (mujeres).</p>
-    <p><strong>Sistema de puntuación:</strong> Se otorgan puntos en función de la posición final en cada prueba. Los puntos obtenidos en las mejores 5 de las 7 pruebas regulares se suman para el ranking. La gran final cuenta como doble.</p>
-    <p><strong>Inscripción:</strong> A través del formulario de inscripción online o contactando con tu club. El plazo de inscripción cierra 48 horas antes de cada prueba. La cuota de participación se fija en cada circular de competición.</p>
-    <p><strong>Para más información:</strong> federacion@fedgolfclm.com · Teléfono: 949-262300</p>
+    <p><strong>¿Quién puede participar?</strong> El circuito está abierto a todos los jugadores federados con hándicap EGA comprendido entre 26.5 y 36.0 en el momento de jugar su primera prueba. La competición es individual stableford a 9 hoyos.</p>
+    <p><strong>Inscripción:</strong> En cada club que organice uno de los torneos previos a la Final Autonómica.</p>
+    
+    <div style="margin-top: 1.5rem;">
+      <p style="margin-bottom: 0.5rem; font-weight: 600;">Reglamentos oficiales y enlaces de interés:</p>
+      <ul style="list-style: none; padding-left: 0; display: flex; flex-direction: column; gap: 0.5rem;">
+        <li>
+          <a href="https://www.fedgolfclm.com/wp-content/uploads/2025/08/REGLAMENTO-CIRCUITO-CLM-5a-CATEGORIA-2025-OK.pdf" target="_blank" class="btn-secondary" style="font-size: 11px; padding: 8px 16px; display: inline-flex; align-items: center; gap: 6px;">
+            <svg viewBox="0 0 64 64" width="16" height="16" fill="none" stroke="var(--gold)" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle; display:inline-block;"><path d="M14 8v48h36V24L34 8H14z M34 8v16h16 M30 34h12 M30 44h12" /><circle cx="22" cy="34" r="2.5" fill="var(--gold)" stroke="none" /><circle cx="22" cy="44" r="2.5" fill="var(--gold)" stroke="none" /></svg>
+            Acceso al Reglamento Autonómico
+          </a>
+        </li>
+        <li>
+          <a href="https://www.fedgolfclm.com/wp-content/uploads/2025/07/circuito-5-categoria-clm-reglamento-2025-2.pdf" target="_blank" class="btn-secondary" style="font-size: 11px; padding: 8px 16px; display: inline-flex; align-items: center; gap: 6px;">
+            <svg viewBox="0 0 64 64" width="16" height="16" fill="none" stroke="var(--gold)" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle; display:inline-block;"><path d="M14 8v48h36V24L34 8H14z M34 8v16h16 M30 34h12 M30 44h12" /><circle cx="22" cy="34" r="2.5" fill="var(--gold)" stroke="none" /><circle cx="22" cy="44" r="2.5" fill="var(--gold)" stroke="none" /></svg>
+            Información e inscripciones - Circuito Autonómico
+          </a>
+        </li>
+        <li>
+          <a href="https://rfegolf.es/ArtculosDocumento/CIRCULARES/Circulares%202025/cir0725.pdf" target="_blank" class="btn-secondary" style="font-size: 11px; padding: 8px 16px; display: inline-flex; align-items: center; gap: 6px;">
+            <svg viewBox="0 0 64 64" width="16" height="16" fill="none" stroke="var(--gold)" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle; display:inline-block;"><path d="M14 8v48h36V24L34 8H14z M34 8v16h16 M30 34h12 M30 44h12" /><circle cx="22" cy="34" r="2.5" fill="var(--gold)" stroke="none" /><circle cx="22" cy="44" r="2.5" fill="var(--gold)" stroke="none" /></svg>
+            Reglamento Nacional e información adicional
+          </a>
+        </li>
+      </ul>
+    </div>
   </div>
 </div>
 
