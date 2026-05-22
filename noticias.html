@@ -75,7 +75,20 @@
       padding: 0 4rem;
       gap: 0;
     }
-    .listado-section { background: var(--white); padding: 40px 40px 80px 0; }
+    .listado-section {
+      background: var(--white);
+      padding: 40px 40px 40px 0;
+      max-height: 85vh;
+      overflow-y: auto;
+      scroll-behavior: smooth;
+      /* Custom scrollbar */
+      scrollbar-width: thin;
+      scrollbar-color: var(--green-accent) var(--gray-100);
+    }
+    .listado-section::-webkit-scrollbar { width: 6px; }
+    .listado-section::-webkit-scrollbar-track { background: var(--gray-100); border-radius: 3px; }
+    .listado-section::-webkit-scrollbar-thumb { background: var(--green-accent); border-radius: 3px; }
+    .listado-section::-webkit-scrollbar-thumb:hover { background: var(--green-dark); }
 
     /* ── Sidebar patrocinadores ── */
     .patroc-sidebar {
@@ -210,7 +223,7 @@
     @media (max-width:900px) {
       .filtros-section { position:static; }
       .noticias-main-grid { grid-template-columns: 1fr; padding: 0; }
-      .listado-section { padding:32px 2.5rem 60px; }
+      .listado-section { padding:32px 2.5rem 32px; max-height: 75vh; }
       .patroc-sidebar { position:static; padding: 0 2.5rem 40px; border-left: none; border-top: 1px solid var(--gray-100); }
       .noticia-fila { grid-template-columns:140px 1fr; }
       .noticia-fila-thumb { width:140px; min-height:110px; }
@@ -444,7 +457,8 @@
     if (p < 1 || p > pages) return;
     currentPage = p;
     render();
-    document.querySelector('.listado-section').scrollIntoView({ behavior:'smooth', block:'start' });
+    var listado = document.querySelector('.listado-section');
+    if (listado) listado.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   function render() {
