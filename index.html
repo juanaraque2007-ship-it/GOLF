@@ -17,84 +17,6 @@
 
 <body>
 
-  <nav>
-    <a href="index.html" class="nav-logo">
-      <div class="nav-logo-icon">
-        <img src="img/favicon_pagina.png" alt="Logo FGCLM" style="height: 40px; width: auto;">
-      </div>
-      <div class="nav-logo-text">
-        <span>Federación de Golf</span>
-        <span>Castilla-La Mancha</span>
-      </div>
-    </a>
-
-    <ul class="nav-links">
-      <li class="dropdown">
-        <a href="#sobre">Federación</a>
-        <ul class="dropdown-menu">
-          <li><a href="presidente.html">Bienvenida del Presidente</a></li>
-          <li><a href="junta_directiva.html">Junta Directiva y Asamblea</a></li>
-          <li><a href="comites.html">Comités y Delegaciones</a></li>
-          <li><a href="licencia.html">Licencia y Hándicap</a></li>
-          <li><a href="subvenciones.html">Subvenciones</a></li>
-          <li><a href="transparencia.html">Transparencia</a></li>
-          <li><a href="contacto.html">Contacto</a></li>
-        </ul>
-      </li>
-
-      <li class="dropdown">
-        <a href="#reglas-golf.html">Reglamentos</a>
-        <ul class="dropdown-menu">
-          <li><a href="reglas-golf.html">Reglas de Golf</a></li>
-          <li><a href="circulares.html">Circulares RFEG</a></li>
-          <li><a href="circulares.html">Circulares FGCLM</a></li>
-          <li><a href="circulares.html">Reglas Locales</a></li>
-        </ul>
-      </li>
-
-      <li class="dropdown">
-        <a href="#rankings">Rankings</a>
-        <ul class="dropdown-menu">
-          <li><a href="rankings.html">Rankings Castilla-La Mancha</a></li>
-          <li><a href="circuito-5cat.html">Circuito 5ª Categoría</a></li>
-        </ul>
-      </li>
-
-      <li><a href="clubes.html">Clubes y Campos</a></li>
-
-      <li class="dropdown">
-        <a href="#torneos">Torneos</a>
-        <ul class="dropdown-menu">
-          <li><a href="inscripcion.html">Calendario</a></li>
-          <li><a href="https://rfegolf.es/NoticiasFederacionesPaginas/FederationMicrosite.aspx?FedId=32"
-              target="_blank">Calendario RFEG</a></li>
-          <li><a href="en-vivo.html"><span class="recording-indicator"></span>En vivo</a></li>
-          <li><a href="castillaInternacional.html">Castilla-La Mancha en Cptos. Internacionales</a></li>
-        </ul>
-      </li>
-
-      <li><a href="escuela.html">Escuela</a></li>
-    </ul>
-
-    <div class="nav-actions">
-      <a href="https://rfegolf.es/PaginasServicios/Servicios.aspx" class="btn-nav btn-nav-outline">Consultar
-        Hándicap</a>
-      <div class="dropdown-app nav-app-dropdown">
-        <button class="btn-nav btn-nav-gold boton-app-nav"><svg viewBox="0 0 24 24" width="16" height="16" fill="none"
-            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-            style="margin-right:6px; display:inline-block; vertical-align:-2px;">
-            <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
-            <line x1="12" y1="18" x2="12.01" y2="18"></line>
-          </svg>App Torneos FGCLM ▾</button>
-        <div class="dropdown-contenido dropdown-contenido-nav">
-          <a href="https://apps.apple.com/es/app/fgclm-torneos/id6444149260" target="_blank">iOS</a>
-          <a href="https://play.google.com/store/apps/details?id=es.torneodegolf.fed.app&pli=1"
-            target="_blank">Android</a>
-          <a href="https://appgallery.huawei.com/app/C107314035" target="_blank">Huawei</a>
-        </div>
-      </div>
-    </div>
-  </nav>
 
   <section class="hero">
     <div class="hero-bg"></div>
@@ -139,7 +61,7 @@
       <div class="section-label">Actualidad</div>
       <h2 class="section-title">Últimas noticias</h2>
     </div>
-    <!-- Skeleton mientras carga el JSON -->
+
     <div id="noticiasIndexSkeleton" style="display:flex; justify-content:center; overflow:hidden;">
       <div
         style="display:flex; height:380px; width:85%; background:var(--white); border:1px solid var(--gray-100); border-radius:12px; overflow:hidden; box-shadow:0 4px 16px rgba(0,0,0,0.06);">
@@ -165,7 +87,7 @@
       </div>
     </div>
 
-    <!-- Carrusel real, relleno por JS desde noticias_data.json -->
+
     <div class="noticias-carousel-wrapper" id="noticiasCarouselWrapper" style="display:none; position: relative;">
       <button class="carousel-arrow prev-arrow" id="btnPrevNews" aria-label="Noticia anterior">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
@@ -199,7 +121,7 @@
     </div>
 
     <div class="calendario-grid" id="calendarioIndexGrid">
-      <!-- Los eventos se cargarán dinámicamente desde calendario_index.js y se filtrarán los anteriores a la fecha actual -->
+
     </div>
 
     <div style="margin-top: 2.5rem;">
@@ -333,7 +255,7 @@
           style="height:64px; width:auto;" />
         <div class="pat-featured-name">Junta de Castilla-La Mancha</div>
       </a>
-      </a>
+
 
       <a href="https://automaor.com.es/" target="_blank" class="pat-featured-card">
         <div class="pat-featured-badge">Patrocinador Oficial</div>
@@ -392,37 +314,7 @@
       </a>
     </div>
   </div>
-  <footer class="footer-minimal">
-    <div class="footer-top">
-      <div>
-        <div class="footer-col-title">La federación</div>
-        <ul class="footer-links">
-          <li><a href="presidente.html">Bienvenida del Presidente</a></li>
-          <li><a href="comites.html">Comités y Delegaciones</a></li>
-          <li><a href="contacto.html">Contacto</a></li>
-        </ul>
-      </div>
 
-      <div>
-        <div class="footer-col-title">Legal</div>
-        <ul class="footer-links">
-          <li><a href="aviso-legal.html">Aviso Legal</a></li>
-          <li><a href="privacidad.html">Política de Privacidad</a></li>
-          <li><a href="cookies.html">Política de Cookies</a></li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="footer-bottom">
-      <p>© 2026 Federación de Golf de Castilla-La Mancha · Todos los derechos reservados</p>
-      <div class="footer-social">
-        <a href="https://www.facebook.com/fedgolfclm/" target="_blank" rel="noopener" title="Facebook"><img
-            src="img/facebook_logo.png" alt="Facebook"></a>
-        <a href="https://www.instagram.com/fedgolfclm" target="_blank" rel="noopener" title="Instagram"><img
-            src="img/instagram_logo.png" alt="Instagram"></a>
-      </div>
-    </div>
-  </footer>
 
   <script src="shared.js"></script>
   <script src="calendario_index.js"></script>
