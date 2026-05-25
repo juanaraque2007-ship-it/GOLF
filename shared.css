@@ -3032,6 +3032,9 @@ body.a11y-dark-mode .junta-card,
 body.a11y-dark-mode .asamblea-info,
 body.a11y-dark-mode .tratamiento-card,
 body.a11y-dark-mode .content-card,
+body.a11y-dark-mode .update-content,
+body.a11y-dark-mode .province,
+body.a11y-dark-mode .result-item,
 body.a11y-dark-mode .meta-box,
 body.a11y-dark-mode .section-block,
 body.a11y-dark-mode .torneo-card,
@@ -3099,6 +3102,9 @@ body.a11y-dark-mode .asamblea-info p,
 body.a11y-dark-mode .tratamiento-card p,
 body.a11y-dark-mode .tratamiento-card h3,
 body.a11y-dark-mode .content-card p,
+body.a11y-dark-mode .update-content p,
+body.a11y-dark-mode .province p,
+body.a11y-dark-mode .province strong,
 body.a11y-dark-mode .torneo-nombre,
 body.a11y-dark-mode .torneo-fecha,
 body.a11y-dark-mode .torneo-campo,
@@ -3175,9 +3181,11 @@ body.a11y-dark-mode .profesor-nombre,
 body.a11y-dark-mode .section-title,
 body.a11y-dark-mode .ranking-card h3,
 body.a11y-dark-mode .section-block h3,
+body.a11y-dark-mode .ranking-item h3,
 body.a11y-dark-mode .content-card h2,
 body.a11y-dark-mode .province h4,
 body.a11y-dark-mode .result-item h4,
+body.a11y-dark-mode .info-link,
 body.a11y-dark-mode .prueba-fecha,
 body.a11y-dark-mode .pts-cell,
 body.a11y-dark-mode .tab-btn.active,
@@ -3217,7 +3225,8 @@ body.a11y-dark-mode .club-hoyos,
 body.a11y-dark-mode .club-tipo-badge,
 body.a11y-dark-mode .tipo-verde,
 body.a11y-dark-mode .tipo-pp,
-body.a11y-dark-mode .tipo-rustico {
+body.a11y-dark-mode .tipo-rustico,
+body.a11y-dark-mode .meta-tag {
   background: var(--color-background) !important;
   color: var(--gold-light) !important;
   border: 1px solid var(--color-border) !important;
@@ -3322,6 +3331,40 @@ body.a11y-dark-mode [style*="background:var(--gray-100)"],
 body.a11y-dark-mode [style*="background: var(--gray-100)"] {
   background: var(--color-border) !important;
 }
+
+/* Fix warning/info boxes in dark mode (note-box, important-notes) */
+body.a11y-dark-mode .note-box {
+  background: var(--color-surface) !important;
+  border: 1px solid var(--gold) !important;
+}
+body.a11y-dark-mode .note-box h4 {
+  color: var(--gold) !important;
+}
+body.a11y-dark-mode .note-box p {
+  color: var(--color-text) !important;
+}
+body.a11y-dark-mode .note-box svg {
+  color: var(--gold) !important;
+}
+
+body.a11y-dark-mode .important-notes {
+  background: var(--color-surface) !important;
+  border-left: 4px solid var(--gold) !important;
+  border-right: 1.5px solid var(--color-border) !important;
+  border-top: 1.5px solid var(--color-border) !important;
+  border-bottom: 1.5px solid var(--color-border) !important;
+  border-radius: 0 8px 8px 0 !important;
+}
+body.a11y-dark-mode .important-notes h4 {
+  color: var(--gold) !important;
+}
+body.a11y-dark-mode .important-notes p {
+  color: var(--color-text) !important;
+}
+body.a11y-dark-mode .important-notes strong {
+  color: var(--white) !important;
+}
+
 
 
 /* ========================================================
