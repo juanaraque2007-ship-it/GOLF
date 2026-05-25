@@ -3283,6 +3283,11 @@ body.a11y-dark-mode a {
   color: var(--gold-light) !important;
 }
 
+body.a11y-dark-mode strong {
+  color: var(--gold) !important;
+}
+
+
 body.a11y-dark-mode h1, body.a11y-dark-mode h2,
 body.a11y-dark-mode h3, body.a11y-dark-mode h4,
 body.a11y-dark-mode .block-title,
@@ -3364,6 +3369,16 @@ body.a11y-dark-mode .important-notes p {
 body.a11y-dark-mode .important-notes strong {
   color: var(--white) !important;
 }
+
+/* Enforce avatar circle colors in dark mode */
+body.a11y-dark-mode .profesor-avatar {
+  background: var(--gold) !important;
+  color: var(--green-dark) !important;
+}
+body.a11y-dark-mode .profesor-avatar span {
+  color: var(--green-dark) !important;
+}
+
 
 
 
