@@ -891,14 +891,14 @@ section { padding: 90px 6rem; }
 }
 
 .areas-header {
-  text-align: center;
+  text-align: left;
   max-width: 600px;
-  margin: 0 auto 4rem;
+  margin: 0 0 4rem;
 }
 
 .areas-section .section-label {
   color: var(--green-accent);
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 .areas-section .section-label::before {

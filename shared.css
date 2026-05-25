@@ -3018,6 +3018,24 @@ body.a11y-dark-mode .section-label::before {
   background: var(--gold) !important;
 }
 
+body.a11y-dark-mode .area-icon-wrap {
+  background: linear-gradient(135deg, rgba(201,168,76,0.15) 0%, rgba(45,158,107,0.1) 100%) !important;
+  border-color: rgba(201,168,76,0.2) !important;
+}
+
+body.a11y-dark-mode .area-svg-icon {
+  color: var(--gold) !important;
+}
+
+body.a11y-dark-mode .area-card:hover .area-svg-icon {
+  color: var(--gold-light) !important;
+}
+
+body.a11y-dark-mode .area-card:hover .area-icon-wrap {
+  background: linear-gradient(135deg, rgba(201,168,76,0.25) 0%, rgba(45,158,107,0.15) 100%) !important;
+  border-color: rgba(201,168,76,0.4) !important;
+}
+
 /* Cards & Boxes sitewide */
 body.a11y-dark-mode .area-card,
 body.a11y-dark-mode .noticia-card,
