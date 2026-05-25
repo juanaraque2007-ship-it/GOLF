@@ -3379,6 +3379,90 @@ body.a11y-dark-mode .profesor-avatar span {
   color: var(--green-dark) !important;
 }
 
+/* Legal navigation tabs in dark mode */
+body.a11y-dark-mode .legal-nav a {
+  border-color: var(--color-border) !important;
+  background: transparent !important;
+  color: var(--color-text-secondary) !important;
+}
+body.a11y-dark-mode .legal-nav a:hover,
+body.a11y-dark-mode .legal-nav a.active {
+  border-color: var(--gold) !important;
+  background: var(--color-surface) !important;
+  color: var(--gold) !important;
+}
+
+/* Browser settings cards in dark mode */
+body.a11y-dark-mode .browser-card {
+  background: var(--color-surface) !important;
+  border-color: var(--color-border) !important;
+}
+body.a11y-dark-mode .browser-card:hover {
+  border-color: var(--gold) !important;
+}
+body.a11y-dark-mode .browser-nombre {
+  color: var(--gold) !important;
+}
+body.a11y-dark-mode .browser-desc {
+  color: var(--color-text-secondary) !important;
+}
+
+/* Cookie classification badges in dark mode */
+body.a11y-dark-mode .tipo-badge {
+  border: 1px solid var(--color-border) !important;
+}
+body.a11y-dark-mode .tipo-tecnica {
+  background: #0d2a1e !important;
+  color: var(--green-accent) !important;
+}
+body.a11y-dark-mode .tipo-analitica {
+  background: #3a2e0b !important;
+  color: var(--gold-light) !important;
+}
+body.a11y-dark-mode .tipo-terceros {
+  background: var(--color-border) !important;
+  color: var(--color-text-secondary) !important;
+}
+
+/* Privacy treatment cards and rights list in dark mode */
+body.a11y-dark-mode .tratamiento-card {
+  background: var(--color-surface) !important;
+  border-color: var(--color-border) !important;
+}
+body.a11y-dark-mode .tratamiento-card:hover {
+  border-color: var(--gold) !important;
+}
+body.a11y-dark-mode .tratamiento-titulo {
+  color: var(--gold) !important;
+}
+body.a11y-dark-mode .tratamiento-label {
+  color: var(--color-text-secondary) !important;
+}
+body.a11y-dark-mode .tratamiento-valor {
+  color: var(--color-text) !important;
+}
+body.a11y-dark-mode .derecho-item {
+  border-color: var(--color-border) !important;
+}
+body.a11y-dark-mode .derecho-desc {
+  color: var(--color-text-secondary) !important;
+}
+body.a11y-dark-mode .derecho-titulo {
+  color: var(--gold) !important;
+}
+
+/* Legal tables in dark mode */
+body.a11y-dark-mode .datos-table tr {
+  border-color: var(--color-border) !important;
+}
+body.a11y-dark-mode .datos-table td {
+  color: var(--color-text) !important;
+}
+body.a11y-dark-mode .datos-table td:first-child {
+  color: var(--gold) !important;
+}
+
+
 
 
 
