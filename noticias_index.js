@@ -192,7 +192,7 @@
   }
 
   // Load JSON — path relative to index.html
-  fetch('noticias_data.json')
+  fetch('noticias_index_data.json')
     .then(function (r) {
       if (!r.ok) throw new Error('HTTP ' + r.status);
       return r.json();
@@ -200,7 +200,7 @@
     .then(renderIndexNews)
     .catch(function (err) {
       // On error leave the skeleton and log; doesn't break the rest of the page
-      console.warn('[noticias_index.js] No se pudo cargar noticias_data.json:', err.message);
+      console.warn('[noticias_index.js] No se pudo cargar noticias_index_data.json:', err.message);
       const skeleton = document.getElementById('noticiasIndexSkeleton');
       if (skeleton) {
         skeleton.innerHTML = '<div style="padding:40px;text-align:center;color:var(--gray-300);font-size:13px;grid-column:1/-1;">No se pudieron cargar las noticias.</div>';

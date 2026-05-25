@@ -497,6 +497,14 @@ section { padding: 90px 6rem; }
   color: var(--green-dark);
 }
 
+.noticias-section,
+.calendario-section,
+.areas-section,
+.patrocinadores-section {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 600px;
+}
+
 .noticias-section { background: var(--gray-50); }
 
 .noticias-carousel-wrapper {
