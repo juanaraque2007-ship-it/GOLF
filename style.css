@@ -1697,3 +1697,127 @@ footer {
     filter: none !important;
   }
 }
+
+/* ── WEATHER WIDGET ── */
+.weather-widget {
+  position: absolute;
+  top: 90px;
+  right: 3rem;
+  z-index: 10;
+  background: rgba(10, 61, 46, 0.4);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(201, 168, 76, 0.25);
+  border-radius: 12px;
+  padding: 10px 14px;
+  color: var(--white);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  width: auto;
+  max-width: calc(100vw - 4rem);
+}
+
+@media (max-width: 1200px) {
+  .weather-widget {
+    top: auto;
+    bottom: 120px;
+    right: 50%;
+    transform: translateX(50%);
+  }
+}
+
+@media (max-width: 900px) {
+  .weather-widget {
+    bottom: 80px;
+    padding: 8px 10px;
+  }
+  .weather-item {
+    padding: 0 8px !important;
+    gap: 2px !important;
+  }
+  .weather-province {
+    font-size: 11px !important;
+  }
+  .weather-icon svg {
+    width: 18px !important;
+    height: 18px !important;
+  }
+  .weather-temp {
+    font-size: 12px !important;
+  }
+  .weather-wind {
+    font-size: 8px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .weather-widget {
+    bottom: 90px;
+    width: 92vw;
+    max-width: calc(100vw - 2rem);
+    padding: 8px 4px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    border-radius: 8px;
+  }
+  .weather-widget::-webkit-scrollbar {
+    display: none;
+  }
+  .weather-body {
+    width: max-content;
+    margin: 0 auto;
+  }
+}
+
+.weather-body {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0;
+}
+
+.weather-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 0 12px;
+  border-right: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.weather-item:last-child {
+  border-right: none;
+}
+
+.weather-province {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 700;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.weather-icon {
+  color: var(--gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.weather-icon svg {
+  width: 22px;
+  height: 22px;
+}
+
+.weather-temp {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.weather-wind {
+  font-size: 9px;
+  color: rgba(255, 255, 255, 0.6);
+  margin-top: 2px;
+  white-space: nowrap;
+}
